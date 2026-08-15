@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Bogi Dobos — Multimedia Designer</title>
+<link rel="stylesheet" href="styles.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;800&display=swap" rel="stylesheet">
+<style>
+@keyframes drift1 { 0%,100% { transform: translate(0,0) rotate(-4deg) scale(1); } 50% { transform: translate(14px,-18px) rotate(4deg) scale(1.08); } }
+@keyframes drift2 { 0%,100% { transform: translate(0,0) rotate(3deg) scale(1); } 50% { transform: translate(-16px,16px) rotate(-5deg) scale(0.92); } }
+@keyframes drift3 { 0%,100% { transform: translate(0,0) rotate(-3deg) scale(1); } 50% { transform: translate(10px,14px) rotate(5deg) scale(1.1); } }
+
+html, body { height: 100%; margin: 0; }
+.page { display: none; }
+.page.is-active { display: block; }
+
+.back-btn {
+  background: transparent; border: 1px solid #39351e; border-radius: 50%;
+  width: 44px; height: 44px; display: flex; align-items: center; justify-content: center;
+  cursor: pointer; color: #39351e;
+}
+.home-flower { position: absolute; text-align: center; cursor: pointer; }
+.home-flower img { width: 100%; }
+.home-flower .label {
+  margin-top: -6px; font-size: 14px; letter-spacing: 0.08em; text-transform: uppercase; color: #39351e;
+}
+
+/* Placeholder tiles for assets not yet supplied — see README note at bottom of file */
+.ph {
+  display: flex; align-items: center; justify-content: center; text-align: center;
+  background: repeating-linear-gradient(135deg, #00000008, #00000008 10px, #00000012 10px, #00000012 20px);
+  border: 1px dashed #00000030; color: #00000070; font-size: 13px; padding: 12px;
+  width: 100%; height: 100%; min-height: 120px;
+}
+
+.contact-link { width: 150px; text-align: center; text-decoration: none; cursor: pointer; }
+</style>
+</head>
+<body>
+
+<svg aria-hidden="true" style="position:absolute;width:0;height:0">
+  <clipPath id="flowerClip" clipPathUnits="objectBoundingBox">
+    <circle cx="0.5" cy="0.5" r="0.3" />
+    <circle cx="0.5" cy="0.24" r="0.22" />
+    <circle cx="0.725" cy="0.37" r="0.22" />
+    <circle cx="0.725" cy="0.63" r="0.22" />
+    <circle cx="0.5" cy="0.76" r="0.22" />
+    <circle cx="0.275" cy="0.63" r="0.22" />
+    <circle cx="0.275" cy="0.37" r="0.22" />
+  </clipPath>
+  <filter id="logoRecolor" x="-20%" y="-20%" width="140%" height="140%" color-interpolation-filters="sRGB">
+    <feFlood flood-color="#39351e" />
+    <feComposite in2="SourceGraphic" operator="in" />
+  </filter>
+</svg>
+
+<div style="min-height:100vh;background:#e6e5e1;color:#39351e;display:flex;flex-direction:column">
+
+  <!-- HOME -->
+  <section class="page is-active" data-page="home">
+    <div id="homeViewport" style="width:100%;height:100vh;display:flex;align-items:center;justify-content:center;overflow:hidden;background:#e6e5e1">
+      <div id="homeCanvas" style="width:1440px;height:900px;flex:none;position:relative;background:#e6e5e1;overflow:hidden">
+
+        <div class="home-flower" style="left:9%;top:16%;width:210px;animation:drift1 7s ease-in-out infinite" data-go="2040">
+          <img src="assets/flower-red.png" alt="2040 project" />
+          <div class="label">2040</div>
+        </div>
+        <div class="home-flower" style="right:11%;top:12%;width:230px;animation:drift2 8.5s ease-in-out infinite" data-go="festival">
+          <img src="assets/flower-yellow.png" alt="Festival app project" />
+          <div class="label">Festival App</div>
+        </div>
+        <div class="home-flower" style="left:14%;bottom:10%;width:220px;animation:drift3 9.5s ease-in-out infinite" data-go="arts">
+          <img src="assets/flower-blue.png" alt="Arts project" />
+          <div class="label">Arts</div>
+        </div>
+        <div class="home-flower" style="right:13%;bottom:8%;width:220px;animation:drift2 7.5s ease-in-out infinite" data-go="about">
+          <img src="assets/flower-red.png" alt="Who am I" />
+          <div class="label">Who Am I</div>
+        </div>
+        <div class="home-flower" style="left:50%;top:2%;transform:translateX(-50%);width:150px;animation:drift3 8.5s ease-in-out infinite" data-go="contact">
+          <img src="assets/flower-blue.png" alt="Contact me" />
+          <div class="label">Contact Me!</div>
+        </div>
+        <div class="home-flower" style="left:44%;bottom:4%;width:190px;animation:drift1 8s ease-in-out infinite" data-go="coffee">
+          <img src="assets/flower-yellow.png" alt="Coffee & Connect project" />
+          <div class="label">Coffee & Connect</div>
+        </div>
+
+        <div style="position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;pointer-events:none">
+          <h1 style="font-size:56px;letter-spacing:0.02em;color:#39351e;margin:0">BOGI DOBOS</h1>
+          <div style="font-size:18px;letter-spacing:0.15em;text-transform:uppercase;color:#39351e;opacity:0.75;margin-top:8px">Multimedia designer</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 2040 -->
+  <section class="page" data-page="2040">
+    <div>
+      <button class="back-btn" aria-label="Back" data-go="home" style="position:fixed;top:24px;left:24px;z-index:20">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#39351e" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
+      </button>
+      <div style="position:relative;background:var(--color-surface);width:100%;aspect-ratio:21/9;overflow:hidden;display:flex;align-items:center;justify-content:center">
+        <img src="assets/2040-stickersheet.jpeg" alt="Sticker sheet detail from the gamification kit" style="width:100%;height:100%;object-fit:cover" />
+        <div style="position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:var(--space-3)">
+          <h1 style="margin:0;font-size:180px;color:#4b8f7d">2040</h1>
+        </div>
+      </div>
+      <div style="padding:var(--space-8);background:#e6e5e1">
+      <div style="display:grid;grid-template-columns:1.3fr 1fr;gap:var(--space-8);align-items:stretch">
+        <div style="display:flex;flex-direction:column;gap:var(--space-4)">
+          <p style="font-size:17px;max-width:52ch;opacity:0.85;margin:0"><span style="color:#d6483e">Húsznegyven Egyesület</span> is a civic organization in Budaörs, Hungary, working at the intersection of architecture, urban planning and local community-building. They run exhibitions, talks, workshops and community design sessions to get residents engaged with their built environment, host concerts, theatre, film and PechaKucha nights, and run a year-round architecture club and summer camps for kids. Their home base, the Zichy Major complex, holds a 200m² exhibition space, a café and a courtyard that doubles as an incubator for local initiatives.</p>
+          <p style="font-size:17px;max-width:52ch;opacity:0.85;margin:0">I worked with them on <em>POZITÍV — Építész Szüret 9</em>, an exhibition on urban sustainability and public wellbeing built around Scandinavian best-practice examples across five themes — healthy city, circular city, low-carbon city, movement-based city and resilient city. I helped turn those five themes into a gamified, interactive installation inviting locals to map them onto real sites in Budaörs, and designed posters for several of their events.</p>
+        </div>
+        <div style="background:var(--color-surface);overflow:hidden">
+          <img src="assets/2040-postcards.jpeg" alt="Illustrated postcards from the gamification project" style="width:100%;height:100%;object-fit:cover" />
+        </div>
+      </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FESTIVAL / BLÅ SOL -->
+  <section class="page" data-page="festival">
+    <div>
+      <div style="padding:var(--space-8);background:#e6e5e1">
+        <button class="back-btn" aria-label="Back" data-go="home" style="margin-bottom:var(--space-4)">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#39351e" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
+        </button>
+        <div style="display:grid;grid-template-columns:1.3fr 1fr;gap:var(--space-8);align-items:stretch">
+          <div>
+            <h6 style="color:#39351e">App design</h6>
+            <h1 style="margin-bottom:var(--space-4)">Blå Sol</h1>
+            <p style="font-size:17px;max-width:52ch;opacity:0.85;margin:0">Blå Sol is a non-profit, volunteer-run music festival in Randers built on community, nostalgia and summer vibes. Working with a teammate, I designed a companion app aimed at drawing in more 18+ visitors — a loyalty-points system, a filterable event schedule and festival-ground wayfinding, all wrapped in a bold pink-and-navy identity built around Bowlby One and Poppins.</p>
+          </div>
+          <div style="background:var(--color-surface);overflow:hidden;align-self:start;height:94%">
+            <img src="assets/blasol-styletile.png" alt="Blå Sol style tile — fonts, buttons, icons, color palette" style="width:100%;height:100%;object-fit:cover" />
+          </div>
+        </div>
+        <div style="display:flex;gap:24px;justify-content:center;margin-top:var(--space-6);padding:0 var(--space-8);flex-wrap:nowrap;max-width:1200px;margin-left:auto;margin-right:auto">
+          <div style="flex:0 0 calc((100% - 48px) / 3);max-width:calc((100% - 48px) / 3);overflow:hidden;border-radius:30pt;background:var(--color-surface);box-sizing:border-box">
+            <img src="assets/blasol-home.png" alt="Blå Sol app — home screen (points &amp; leaderboard)" style="width:100%;height:auto;display:block;border-radius:30pt" />
+          </div>
+
+          <div style="flex:0 0 calc((100% - 48px) / 3);max-width:calc((100% - 48px) / 3);overflow:hidden;border-radius:30pt;background:var(--color-surface);box-sizing:border-box">
+            <img src="assets/blasol-events.png" alt="Blå Sol app — events schedule" style="width:100%;height:auto;display:block;border-radius:30pt" />
+          </div>
+
+          <div style="flex:0 0 calc((100% - 48px) / 3);max-width:calc((100% - 48px) / 3);overflow:hidden;border-radius:40pt;background:var(--color-surface);box-sizing:border-box">
+            <img src="assets/blasol-map.png" alt="Blå Sol app — festival map" style="width:100%;height:auto;display:block;border-radius:40pt" />
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ARTS -->
+  <section class="page" data-page="arts">
+    <div style="position:relative;background:#e6e5e1">
+      <img src="assets/flower-red.png" alt="" style="position:absolute;width:180px;left:4%;top:2%;pointer-events:none" />
+      <img src="assets/flower-yellow.png" alt="" style="position:absolute;width:200px;right:5%;top:20%;pointer-events:none" />
+      <img src="assets/flower-blue.png" alt="" style="position:absolute;width:190px;left:8%;bottom:6%;pointer-events:none" />
+      <img src="assets/flower-red.png" alt="" style="position:absolute;width:160px;right:10%;bottom:2%;pointer-events:none" />
+      <img src="assets/flower-yellow.png" alt="" style="position:absolute;width:150px;left:22%;top:12%;pointer-events:none" />
+      <img src="assets/flower-blue.png" alt="" style="position:absolute;width:170px;right:28%;top:4%;pointer-events:none" />
+      <img src="assets/flower-red.png" alt="" style="position:absolute;width:150px;left:15%;top:38%;pointer-events:none" />
+      <img src="assets/flower-yellow.png" alt="" style="position:absolute;width:180px;right:6%;bottom:30%;pointer-events:none" />
+      <img src="assets/flower-blue.png" alt="" style="position:absolute;width:160px;left:42%;bottom:10%;pointer-events:none" />
+      <img src="assets/flower-red.png" alt="" style="position:absolute;width:150px;left:30%;top:58%;pointer-events:none" />
+      <img src="assets/flower-yellow.png" alt="" style="position:absolute;width:170px;right:20%;top:62%;pointer-events:none" />
+      <img src="assets/flower-blue.png" alt="" style="position:absolute;width:150px;left:60%;top:68%;pointer-events:none" />
+      <div style="padding:var(--space-8);position:relative">
+        <button class="back-btn" aria-label="Back" data-go="home" style="margin-bottom:var(--space-4)">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#39351e" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
+        </button>
+        <h6 style="color:#39351e">Illustration series</h6>
+        <h1 style="margin-bottom:var(--space-6)">Arts</h1>
+
+        <h2 style="margin-bottom:var(--space-2)">Figure drawings</h2>
+        <p style="font-size:17px;max-width:60ch;opacity:0.85;margin-bottom:var(--space-6)">Charcoal and pencil life-drawing studies from figure sessions — working from observation on pose, weight and light.</p>
+        <div style="display:grid;grid-template-columns:repeat(5,1fr);gap:var(--space-4)">
+          <div style="background:var(--color-surface);aspect-ratio:3/4;overflow:hidden"><img src="assets/figure-1.jpg" alt="Charcoal figure drawing, seated male model" style="width:100%;height:100%;object-fit:cover" /></div>
+          <div style="background:var(--color-surface);aspect-ratio:3/4;overflow:hidden"><img src="assets/figure-2.jpg" alt="Charcoal figure drawing, seated female model" style="width:100%;height:100%;object-fit:cover" /></div>
+          <div style="background:var(--color-surface);aspect-ratio:3/4;overflow:hidden"><img src="assets/figure-3.jpg" alt="Charcoal figure drawing, seated male model on stool" style="width:100%;height:100%;object-fit:cover" /></div>
+          <div style="background:var(--color-surface);aspect-ratio:3/4;overflow:hidden"><img src="assets/figure-4.jpg" alt="Charcoal portrait study" style="width:100%;height:100%;object-fit:cover" /></div>
+          <div style="background:var(--color-surface);aspect-ratio:3/4;overflow:hidden"><img src="assets/figure-5.jpg" alt="Charcoal figure drawing, seated model on block" style="width:100%;height:100%;object-fit:cover" /></div>
+        </div>
+
+        <h2 style="margin-top:var(--space-8);margin-bottom:var(--space-2)">Street sketches</h2>
+        <p style="font-size:17px;max-width:60ch;opacity:0.85;margin-bottom:var(--space-6)">Buildings drawn on location — quick pen sketches and a colored-pencil study of an old market hall.</p>
+        <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:var(--space-4)">
+          <div style="background:var(--color-surface);aspect-ratio:3/4;overflow:hidden"><img src="assets/sketch-aarhus.jpg" alt="Colored pencil sketch of a brick building" style="width:100%;height:100%;object-fit:cover" /></div>
+          <div style="background:var(--color-surface);aspect-ratio:3/4;overflow:hidden"><img src="assets/sketch-deli1.jpg" alt="Pen sketch of a waterfront street" style="width:100%;height:100%;object-fit:cover" /></div>
+          <div style="background:var(--color-surface);aspect-ratio:3/4;overflow:hidden"><img src="assets/sketch-deli2.jpg" alt="Pen sketch of a building facade" style="width:100%;height:100%;object-fit:cover" /></div>
+          <div style="background:var(--color-surface);aspect-ratio:3/4;overflow:hidden"><img src="assets/sketch-lukacs.jpg" alt="Pen sketch of a colonnaded building entrance" style="width:100%;height:100%;object-fit:cover" /></div>
+          <div style="background:var(--color-surface);aspect-ratio:3/4;overflow:hidden"><img src="assets/sketch-otepeshaz.jpg" alt="Pen sketch of a colonnaded building entrance, alternate angle" style="width:100%;height:100%;object-fit:cover" /></div>
+          <div style="background:var(--color-surface);aspect-ratio:3/4;overflow:hidden"><img src="assets/sketch-untitled2.jpg" alt="Pen sketch of city buildings" style="width:100%;height:100%;object-fit:cover" /></div>
+        </div>
+
+        <h2 style="margin-top:var(--space-8);margin-bottom:var(--space-2)">Posters</h2>
+        <p style="font-size:17px;max-width:60ch;opacity:0.85;margin-bottom:var(--space-6)">Event posters for talks, exhibitions and competitions.</p>
+        <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:var(--space-4)">
+          <div style="background:var(--color-surface);aspect-ratio:3/4;overflow:hidden"><img src="assets/poster-szendvics-week.jpg" alt="Poster for Szendvics week event, illustrated sandwich ingredients" style="width:100%;height:100%;object-fit:cover" /></div>
+          <div style="background:var(--color-surface);aspect-ratio:3/4;overflow:hidden"><img src="assets/poster-forest.png" alt="Poster — night forest with treehouses" style="width:100%;height:100%;object-fit:cover" /></div>
+          <div style="background:var(--color-surface);aspect-ratio:3/4;overflow:hidden"><div class="ph">Poster — "Hol a hangunk", torn-paper collage</div></div>
+          <div style="background:var(--color-surface);aspect-ratio:3/4;overflow:hidden"><img src="assets/poster-trippi-troppi.jpg" alt="Poster for Mi lesz a kertedben 2050-ben model competition" style="width:100%;height:100%;object-fit:cover" /></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- COFFEE & CONNECT -->
+  <section class="page" data-page="coffee">
+    <div>
+      <div style="padding:var(--space-8);background:#f4e3d3">
+        <button class="back-btn" aria-label="Back" data-go="home" style="border-color:#e8571b;color:#e8571b;margin-bottom:var(--space-4)">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#e8571b" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
+        </button>
+        <div style="display:grid;grid-template-columns:1.3fr 1fr;gap:var(--space-8);align-items:stretch">
+          <div>
+            <div>
+              <h6 style="color:#e8571b">UX / web design</h6>
+              <h1 style="margin-bottom:var(--space-4);color:#e8571b">Coffee & Connect</h1>
+              <p style="font-size:17px;opacity:0.85;margin:0">An exam project for young coffee enthusiasts in Aarhus who want to discover high-quality cafés and connect with others who share the same passion. Desk research into local cafés (mapped by atmosphere, price, quality and accessibility) shaped a website where users explore cafés with confidence, arrange coffee meet-ups, join café-organized events, and share their own experiences and photos in a profile.</p>
+            </div>
+            <div style="background:var(--color-surface);overflow:hidden;margin-top:var(--space-6)">
+              <img src="assets/coffee-home.png" alt="Coffee &amp; Connect — home screen illustration" style="width:100%;height:100%;object-fit:cover" />
+            </div>
+            <div style="background:var(--color-surface);overflow:hidden;margin-top:var(--space-6)">
+              <img src="assets/coffee-browse.png" alt="Browse cafés — La Cabra, Stiller's, Europa" style="width:100%;height:100%;object-fit:cover" />
+            </div>
+          </div>
+          <div style="background:var(--color-surface);overflow:hidden">
+            <img src="assets/coffee-lacabra.png" alt="La Cabra café detail page" style="width:100%;height:100%;object-fit:cover" />
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section class="page" data-page="contact">
+    <div style="padding:var(--space-8);background:#e6e5e1;min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center">
+      <button class="back-btn" aria-label="Back" data-go="home" style="position:fixed;top:24px;left:24px">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#39351e" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
+      </button>
+      <h1 style="margin-bottom:var(--space-6)">Contact me!</h1>
+      <div style="display:flex;flex-wrap:wrap;justify-content:center;gap:var(--space-6)">
+        <a href="https://instagram.com" target="_blank" rel="noopener" class="contact-link" style="animation:drift1 7s ease-in-out infinite">
+          <img src="assets/flower-red.png" alt="Instagram" style="width:100%" />
+          <div class="label" style="Margin-top:-6px;font-size:14px;letter-spacing:0.08em;text-transform:uppercase;color:#39351e">Instagram</div>
+        </a>
+        <a href="https://facebook.com" target="_blank" rel="noopener" class="contact-link" style="animation:drift2 8.5s ease-in-out infinite">
+          <img src="assets/flower-yellow.png" alt="Facebook" style="width:100%" />
+          <div class="label" style="margin-top:-6px;font-size:14px;letter-spacing:0.08em;text-transform:uppercase;color:#39351e">Facebook</div>
+        </a>
+        <a href="https://linkedin.com" target="_blank" rel="noopener" class="contact-link" style="animation:drift3 9.5s ease-in-out infinite">
+          <img src="assets/flower-blue.png" alt="LinkedIn" style="width:100%" />
+          <div class="label" style="margin-top:-6px;font-size:14px;letter-spacing:0.08em;text-transform:uppercase;color:#39351e">LinkedIn</div>
+        </a>
+        <a href="#" class="contact-link" style="animation:drift2 7.5s ease-in-out infinite">
+          <img src="assets/flower-red.png" alt="Something else" style="width:100%" />
+          <div class="label" style="margin-top:-6px;font-size:14px;letter-spacing:0.08em;text-transform:uppercase;color:#39351e">Something Else</div>
+        </a>
+        <a href="#" class="contact-link" style="animation:drift1 8.5s ease-in-out infinite">
+          <img src="assets/flower-yellow.png" alt="Something else" style="width:100%" />
+          <div class="label" style="margin-top:-6px;font-size:14px;letter-spacing:0.08em;text-transform:uppercase;color:#39351e">Something Else</div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT / WHO AM I -->
+  <section class="page" data-page="about">
+    <div style="background:#e6e5e1">
+      <div style="padding:var(--space-8)">
+        <button class="back-btn" aria-label="Back" data-go="home" style="margin-bottom:var(--space-6)">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#39351e" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
+        </button>
+        <h6 style="color:#39351e;text-align:center">Who Am I</h6>
+        <h1 style="text-align:center;margin-bottom:var(--space-8)">A few sides of me</h1>
+      </div>
+
+      <div style="padding:0 var(--space-8) var(--space-8);display:grid;grid-template-columns:1fr 1.3fr;gap:var(--space-8);align-items:center">
+        <div style="aspect-ratio:1/1;display:flex;align-items:center;justify-content:center">
+          <img src="assets/general-photo.jpg" alt="Portrait" style="width:100%;height:100%;object-fit:cover;clip-path:url(#flowerClip)" />
+        </div>
+        <div>
+          <h6 style="color:#39351e">General</h6>
+          <h2 style="margin-bottom:var(--space-4)">21, from Hungary, barista by trade.</h2>
+          <ul style="list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:12px;max-width:50ch">
+            <li style="display:flex;align-items:center;gap:10px;font-size:17px;opacity:0.85"><img src="assets/flower-red.png" alt="" style="width:20px;height:20px;object-fit:contain;flex-shrink:0" />I'm 21, from Hungary</li>
+            <li style="display:flex;align-items:center;gap:10px;font-size:17px;opacity:0.85"><img src="assets/flower-blue.png" alt="" style="width:20px;height:20px;object-fit:contain;flex-shrink:0" />I'm a barista — I love making coffee</li>
+            <li style="display:flex;align-items:center;gap:10px;font-size:17px;opacity:0.85"><img src="assets/flower-yellow.png" alt="" style="width:20px;height:20px;object-fit:contain;flex-shrink:0" />I love art, and I love working with colors</li>
+            <li style="display:flex;align-items:center;gap:10px;font-size:17px;opacity:0.85"><img src="assets/flower-red.png" alt="" style="width:20px;height:20px;object-fit:contain;flex-shrink:0" />I love rock music</li>
+            <li style="display:flex;align-items:center;gap:10px;font-size:17px;opacity:0.85"><img src="assets/flower-blue.png" alt="" style="width:20px;height:20px;object-fit:contain;flex-shrink:0" />My favorite architect is Le Corbusier — I'm drawn to modernism</li>
+            <li style="display:flex;align-items:center;gap:10px;font-size:17px;opacity:0.85"><img src="assets/flower-yellow.png" alt="" style="width:20px;height:20px;object-fit:contain;flex-shrink:0" />I speak English, Hungarian and Danish</li>
+          </ul>
+          <p style="font-size:17px;max-width:50ch;opacity:0.85;margin-top:var(--space-4)">Why multimedia design? It's the connection between people and design — all the opportunities it opens up to put what I make into action.</p>
+          <div style="display:flex;flex-wrap:wrap;gap:8px;margin-top:var(--space-4)">
+            <span style="display:inline-block;padding:6px 14px;border:1px solid #39351e;border-radius:999px;font-size:13px;letter-spacing:0.02em;color:#39351e">bold</span>
+            <span style="display:inline-block;padding:6px 14px;border:1px solid #39351e;border-radius:999px;font-size:13px;letter-spacing:0.02em;color:#39351e">happy</span>
+            <span style="display:inline-block;padding:6px 14px;border:1px solid #39351e;border-radius:999px;font-size:13px;letter-spacing:0.02em;color:#39351e">art</span>
+            <span style="display:inline-block;padding:6px 14px;border:1px solid #39351e;border-radius:999px;font-size:13px;letter-spacing:0.02em;color:#39351e">music</span>
+            <span style="display:inline-block;padding:6px 14px;border:1px solid #39351e;border-radius:999px;font-size:13px;letter-spacing:0.02em;color:#39351e">festival</span>
+            <span style="display:inline-block;padding:6px 14px;border:1px solid #39351e;border-radius:999px;font-size:13px;letter-spacing:0.02em;color:#39351e">coffee</span>
+            <span style="display:inline-block;padding:6px 14px;border:1px solid #39351e;border-radius:999px;font-size:13px;letter-spacing:0.02em;color:#39351e">community</span>
+          </div>
+        </div>
+      </div>
+
+      <div style="height:1px;background:#39351e;opacity:0.15;margin:0 var(--space-8)"></div>
+
+      <div style="padding:var(--space-8);display:grid;grid-template-columns:1.3fr 1fr;gap:var(--space-8);align-items:center">
+        <div>
+          <h6 style="color:#4b8f7d">Team Player</h6>
+          <h2 style="margin-bottom:var(--space-3)">Better work happens together.</h2>
+          <p style="font-size:17px;max-width:50ch;opacity:0.85">I'm a good listener and an empathetic, creative team builder. My strengths are personal connection, speaking, design, colors and creativity. Classmates describe me as an out-of-the-box thinker, a problem solver, a colorful personality, a happy person and creative.</p>
+          <div style="display:flex;flex-wrap:wrap;gap:8px;margin-top:var(--space-4)">
+            <span style="display:inline-block;padding:6px 14px;border:1px solid #4b8f7d;border-radius:999px;font-size:13px;letter-spacing:0.02em;color:#4b8f7d">good listener</span>
+            <span style="display:inline-block;padding:6px 14px;border:1px solid #4b8f7d;border-radius:999px;font-size:13px;letter-spacing:0.02em;color:#4b8f7d">empathetic</span>
+            <span style="display:inline-block;padding:6px 14px;border:1px solid #4b8f7d;border-radius:999px;font-size:13px;letter-spacing:0.02em;color:#4b8f7d">creative</span>
+            <span style="display:inline-block;padding:6px 14px;border:1px solid #4b8f7d;border-radius:999px;font-size:13px;letter-spacing:0.02em;color:#4b8f7d">team builder</span>
+          </div>
+        </div>
+        <div style="aspect-ratio:1/1;display:flex;align-items:center;justify-content:center">
+          <img src="assets/team-photo.png" alt="With friends" style="width:100%;height:100%;object-fit:cover;clip-path:url(#flowerClip)" />
+        </div>
+      </div>
+
+      <div style="height:1px;background:#39351e;opacity:0.15;margin:0 var(--space-8)"></div>
+
+      <div style="padding:var(--space-8);display:flex;flex-direction:column;align-items:center;text-align:center;gap:var(--space-3)">
+        <h6 style="color:#39351e">Personality</h6>
+        <div style="display:flex;align-items:center;gap:var(--space-3)">
+          <img src="assets/flower-yellow.png" alt="" style="width:40px;height:40px;object-fit:contain" />
+          <h2 style="margin:0">I'm an ENFP-T — "The Campaigner"</h2>
+          <img src="assets/flower-yellow.png" alt="" style="width:40px;height:40px;object-fit:contain" />
+        </div>
+        <p style="font-size:17px;max-width:60ch;opacity:0.85">Extraverted, Intuitive, Feeling, Prospecting — Turbulent. It means I'm curious and people-driven, I connect ideas and people easily, and I lead with empathy and imagination over strict planning. Campaigners are warm, enthusiastic, and genuinely care about others — which tracks with being a team player who likes bold, colorful, community-minded work.</p>
+      </div>
+
+      <div style="height:1px;background:#39351e;opacity:0.15;margin:0 var(--space-8)"></div>
+
+      <div style="padding:var(--space-8);display:grid;grid-template-columns:1fr 1.3fr;gap:var(--space-8);align-items:center">
+        <div style="aspect-ratio:1/1;display:flex;align-items:center;justify-content:center">
+          <div class="ph" style="clip-path:url(#flowerClip);border:none">Family photo</div>
+        </div>
+        <div>
+          <h6 style="color:#39351e">Family</h6>
+          <h2 style="margin-bottom:var(--space-3)">Home keeps me grounded.</h2>
+          <p style="font-size:17px;max-width:50ch;opacity:0.85">I get all my skills, ideas and motivation from my family. Growing up with architect parents, I was introduced to art, design and architecture at a very young age. I was raised to take in arts and to express myself through them. For me, life is about impression — not about fitting in.</p>
+        </div>
+      </div>
+
+      <div style="height:1px;background:#39351e;opacity:0.15;margin:0 var(--space-8)"></div>
+
+      <div style="padding:var(--space-8);display:grid;grid-template-columns:1.3fr 1fr;gap:var(--space-8);align-items:center">
+        <div>
+          <h6 style="color:#4b8f7d">Dreams</h6>
+          <h2 style="margin-bottom:var(--space-3)">In five years...</h2>
+          <p style="font-size:17px;max-width:50ch;opacity:0.85">In five years I see myself still working with people, still working with design — and hopefully doing something with architecture too. My most important skills are working with colors, drawing, working with people and getting ideas. I'm passionate about colors, design, gamification, architecture, interactive design and interactivity.</p>
+          <div style="display:flex;flex-wrap:wrap;gap:8px;margin-top:var(--space-4)">
+            <span style="display:inline-block;padding:6px 14px;border:1px solid #4b8f7d;border-radius:999px;font-size:13px;letter-spacing:0.02em;color:#4b8f7d">colors</span>
+            <span style="display:inline-block;padding:6px 14px;border:1px solid #4b8f7d;border-radius:999px;font-size:13px;letter-spacing:0.02em;color:#4b8f7d">design</span>
+            <span style="display:inline-block;padding:6px 14px;border:1px solid #4b8f7d;border-radius:999px;font-size:13px;letter-spacing:0.02em;color:#4b8f7d">gamification</span>
+            <span style="display:inline-block;padding:6px 14px;border:1px solid #4b8f7d;border-radius:999px;font-size:13px;letter-spacing:0.02em;color:#4b8f7d">architecture</span>
+            <span style="display:inline-block;padding:6px 14px;border:1px solid #4b8f7d;border-radius:999px;font-size:13px;letter-spacing:0.02em;color:#4b8f7d">interactive design</span>
+            <span style="display:inline-block;padding:6px 14px;border:1px solid #4b8f7d;border-radius:999px;font-size:13px;letter-spacing:0.02em;color:#4b8f7d">interactivity</span>
+          </div>
+          <button data-go="contact" style="margin-top:var(--space-4);display:inline-block;padding:12px 28px;border:none;border-radius:999px;background:#e8571b;color:#fff;font-size:16px;letter-spacing:0.02em;cursor:pointer">Get in touch →</button>
+        </div>
+        <div style="aspect-ratio:1/1;display:flex;align-items:center;justify-content:center">
+          <img src="assets/dreams-photo.jpg" alt="Portrait" style="width:100%;height:100%;object-fit:cover;clip-path:url(#flowerClip)" />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <img src="assets/logo-mark.png" alt="Studio mark, back to home" title="Home" data-go="home" style="position:fixed;bottom:18px;right:18px;width:64px;height:64px;object-fit:contain;cursor:pointer;z-index:20;filter:url(#logoRecolor)" />
+
+</div>
+
+<script>
+(function () {
+  function go(page) {
+    document.querySelectorAll('.page').forEach(function (el) {
+      el.classList.toggle('is-active', el.dataset.page === page);
+    });
+    window.scrollTo(0, 0);
+  }
+
+  document.addEventListener('click', function (e) {
+    var target = e.target.closest('[data-go]');
+    if (!target) return;
+    e.preventDefault();
+    go(target.getAttribute('data-go'));
+  });
+
+  var viewport = document.getElementById('homeViewport');
+  var canvas = document.getElementById('homeCanvas');
+  function updateScale() {
+    var s = Math.min(viewport.clientWidth / 1440, viewport.clientHeight / 900, 1);
+    canvas.style.transform = 'scale(' + s + ')';
+  }
+  window.addEventListener('resize', updateScale);
+  updateScale();
+})();
+</script>
+</body>
+</html>

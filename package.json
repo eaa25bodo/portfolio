@@ -1,0 +1,9 @@
+{
+  "name": "portfolio",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "npx live-server --open=./index.html --port=8080",
+    "serve": "npx http-server -c-1 . -p 8080"
+  }
+}

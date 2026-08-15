@@ -1,0 +1,7 @@
+# .gitignore (create at project root)
+node_modules/
+.DS_Store
+.vscode/
+.claude/
+dist/
+build/
