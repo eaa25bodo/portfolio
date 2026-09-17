@@ -19,26 +19,71 @@ html, body { height: 100%; margin: 0; }
 .back-btn {
   background: transparent; border: 1px solid #39351e; border-radius: 50%;
   width: 44px; height: 44px; display: flex; align-items: center; justify-content: center;
-  cursor: pointer; color: #39351e;
+  cursor: pointer; color: #39351e; flex: none;
 }
 .home-flower { position: absolute; text-align: center; cursor: pointer; }
 .home-flower img { width: 100%; }
 .home-flower .label {
   margin-top: -6px; font-size: 14px; letter-spacing: 0.08em; text-transform: uppercase; color: #39351e;
 }
-
-/* Placeholder tiles for assets not yet supplied — see README note at bottom of file */
-.ph {
-  display: flex; align-items: center; justify-content: center; text-align: center;
-  background: repeating-linear-gradient(135deg, #00000008, #00000008 10px, #00000012 10px, #00000012 20px);
-  border: 1px dashed #00000030; color: #00000070; font-size: 13px; padding: 12px;
-  width: 100%; height: 100%; min-height: 120px;
-}
-
 .contact-link { width: 150px; text-align: center; text-decoration: none; cursor: pointer; }
+
+/* phase-nav flowers (Discover/Define/Develop/Deliver) */
+.phase-flower { position: relative; width: 190px; height: 190px; display: flex; align-items: center; justify-content: center; text-decoration: none; cursor: pointer; }
+.phase-flower img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain; pointer-events: none; }
+.phase-flower span { position: relative; font-size: 20px; line-height: 1; color: #39351e; letter-spacing: 0.04em; text-transform: uppercase; font-weight: 700; }
+
+/* pill "view the prototype" buttons */
+.pill-btn { display: inline-block; padding: 18px 56px; border-radius: 999px; font-size: 22px; line-height: 1; text-decoration: none; cursor: pointer; transition: background-color .25s ease, color .25s ease; }
+.pill-btn-blasol { background-color: #EED25D; color: #3A351E; }
+.pill-btn-blasol:hover { background-color: #D6493F; color: #E6E5E1; }
+.pill-btn-coffee { background-color: #e8571b; color: #f4e3d3; }
+.pill-btn-coffee:hover { background-color: #39351e; color: #f4e3d3; }
+
+.cphfw-btn { display: inline-block; padding: 14px 32px; border-radius: 999px; text-decoration: none; font-size: 16px; letter-spacing: 0.02em; transition: background-color .2s ease, color .2s ease; }
+.cphfw-btn-fill { background: #2F6154; color: #f4e3d3; }
+.cphfw-btn-fill:hover { background: #39351e; }
+.cphfw-btn-outline { background: transparent; color: #39351e; border: 1px solid #39351e; }
+.cphfw-btn-outline:hover { background: #39351e; color: #e6e5e1; }
+
+.meta-row { display: flex; justify-content: space-between; gap: var(--space-4); padding: 10px 0; border-bottom: 1px solid rgba(57,53,30,0.25); }
+.meta-row:last-child { border-bottom: none; }
+.meta-row span:first-child { font-weight: 600; }
+.meta-row span:last-child { opacity: 0.85; }
+
+/* toolbox */
+.tool { position: relative; flex: 0 0 64px; width: 64px; }
+.tool-box { width: 64px; height: 64px; border-radius: 18px; overflow: hidden; background: #fff; box-shadow: 0 2px 10px rgba(57,53,30,0.12); transition: transform 220ms ease, box-shadow 220ms ease; }
+.tool:hover .tool-box { transform: scale(1.14); box-shadow: 0 10px 24px rgba(57,53,30,0.22); }
+.tool-box img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.tool-label { position: absolute; top: 100%; left: 50%; margin-top: 12px; font-size: 12px; letter-spacing: 0.04em; text-transform: uppercase; color: #39351e; white-space: nowrap; transition: opacity 200ms ease, transform 200ms ease; opacity: 0; transform: translate(-50%, -6px); }
+.tool:hover .tool-label { opacity: 1; transform: translate(-50%, 0); }
+
+/* footer */
+.site-footer { color: #e6e5e1; padding: 0 var(--space-8) var(--space-6); background-color: #2F6154; position: relative; overflow: hidden; display: none; }
+body[data-page="home"] .site-footer { display: none; }
+body:not([data-page="home"]) .site-footer { display: block; }
+.footer-stripe { display: flex; height: 10px; margin: 0 calc(-1 * var(--space-8)) var(--space-8); }
+.footer-stripe span { display: block; }
+.footer-link { color: #e6e5e1; text-decoration: none; font-size: 16px; }
+.footer-link:hover { color: #eed25d; }
+.footer-toggle { font-size: 13px; letter-spacing: 0.1em; text-transform: uppercase; color: #eed25d; background: transparent; border: none; padding: 0; cursor: pointer; text-align: left; font-family: inherit; }
+.footer-toggle:hover { color: #fff; }
+.footer-sub { color: #e6e5e1; text-decoration: none; font-size: 16px; padding-left: 14px; }
+.footer-sub:hover { color: #eed25d; }
+.footer-toplink { font-size: 13px; letter-spacing: 0.1em; text-transform: uppercase; color: #eed25d; background: transparent; border: none; padding: 0; cursor: pointer; text-align: left; font-family: inherit; text-decoration: none; display: block; }
+.footer-toplink:hover { color: #fff; }
+.footer-worklist { display: flex; flex-direction: column; gap: 10px; border-left: 1px solid rgba(238,210,93,0.4); }
+.footer-worklist[hidden] { display: none; }
+.footer-bottom-link { color: #e6e5e1; text-decoration: none; }
+.footer-bottom-link:hover { color: #eed25d; }
+
+@media (max-width: 900px) {
+  .grid-2 { grid-template-columns: 1fr !important; }
+}
 </style>
 </head>
-<body>
+<body data-page="home">
 
 <svg aria-hidden="true" style="position:absolute;width:0;height:0">
   <clipPath id="flowerClip" clipPathUnits="objectBoundingBox">
@@ -63,19 +108,19 @@ html, body { height: 100%; margin: 0; }
     <div id="homeViewport" style="width:100%;height:100vh;display:flex;align-items:center;justify-content:center;overflow:hidden;background:#e6e5e1">
       <div id="homeCanvas" style="width:1440px;height:900px;flex:none;position:relative;background:#e6e5e1;overflow:hidden">
 
-        <div class="home-flower" style="left:9%;top:16%;width:210px;animation:drift1 7s ease-in-out infinite" data-go="2040">
-          <img src="assets/flower-red.png" alt="2040 project" />
+        <div class="home-flower" style="right:11%;top:12%;width:210px;animation:drift1 7s ease-in-out infinite" data-go="2040">
+          <img src="assets/flower-yellow.png" alt="2040 project" />
           <div class="label">2040</div>
         </div>
-        <div class="home-flower" style="right:11%;top:12%;width:230px;animation:drift2 8.5s ease-in-out infinite" data-go="festival">
-          <img src="assets/flower-yellow.png" alt="Festival app project" />
+        <div class="home-flower" style="right:13%;bottom:8%;width:230px;animation:drift2 8.5s ease-in-out infinite" data-go="festival">
+          <img src="assets/flower-red.png" alt="Festival app project" />
           <div class="label">Festival App</div>
         </div>
-        <div class="home-flower" style="left:14%;bottom:10%;width:220px;animation:drift3 9.5s ease-in-out infinite" data-go="arts">
-          <img src="assets/flower-blue.png" alt="Arts project" />
+        <div class="home-flower" style="left:1%;top:48%;width:220px;animation:drift3 9.5s ease-in-out infinite" data-go="arts">
+          <img src="assets/flower-yellow.png" alt="Arts project" />
           <div class="label">Arts</div>
         </div>
-        <div class="home-flower" style="right:13%;bottom:8%;width:220px;animation:drift2 7.5s ease-in-out infinite" data-go="about">
+        <div class="home-flower" style="left:9%;top:3%;width:240px;animation:drift2 7.5s ease-in-out infinite" data-go="about">
           <img src="assets/flower-red.png" alt="Who am I" />
           <div class="label">Who Am I</div>
         </div>
@@ -84,12 +129,17 @@ html, body { height: 100%; margin: 0; }
           <div class="label">Contact Me!</div>
         </div>
         <div class="home-flower" style="left:44%;bottom:4%;width:190px;animation:drift1 8s ease-in-out infinite" data-go="coffee">
-          <img src="assets/flower-yellow.png" alt="Coffee & Connect project" />
-          <div class="label">Coffee & Connect</div>
+          <img src="assets/flower-yellow.png" alt="Coffee &amp; Connect project" />
+          <div class="label">Coffee &amp; Connect</div>
+        </div>
+        <div class="home-flower" style="left:14%;bottom:10%;width:170px;animation:drift2 9s ease-in-out infinite" data-go="cphfw">
+          <img src="assets/flower-blue.png" alt="CPHFW project" />
+          <div class="label">CPHFW</div>
         </div>
 
         <div style="position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;pointer-events:none">
-          <h1 style="font-size:56px;letter-spacing:0.02em;color:#39351e;margin:0">BOGI DOBOS</h1>
+          <img src="assets/logo-mark.png" alt="Bogi Dobos mark" style="width:104px;height:104px;object-fit:contain;display:block;margin-bottom:18px" />
+          <h1 style="font-size:56px;letter-spacing:0.02em;color:#39351e;margin:0">BOGLARKA DOBOS</h1>
           <div style="font-size:18px;letter-spacing:0.15em;text-transform:uppercase;color:#39351e;opacity:0.75;margin-top:8px">Multimedia designer</div>
         </div>
       </div>
@@ -98,59 +148,161 @@ html, body { height: 100%; margin: 0; }
 
   <!-- 2040 -->
   <section class="page" data-page="2040">
-    <div>
+    <div style="background:#e6e5e1;position:relative">
       <button class="back-btn" aria-label="Back" data-go="home" style="position:fixed;top:24px;left:24px;z-index:20">
         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#39351e" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
       </button>
-      <div style="position:relative;background:var(--color-surface);width:100%;aspect-ratio:21/9;overflow:hidden;display:flex;align-items:center;justify-content:center">
-        <img src="assets/2040-stickersheet.jpeg" alt="Sticker sheet detail from the gamification kit" style="width:100%;height:100%;object-fit:cover" />
-        <div style="position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:var(--space-3)">
-          <h1 style="margin:0;font-size:180px;color:#4b8f7d">2040</h1>
+
+      <img src="assets/flower-red.png" alt="" style="position:absolute;width:150px;right:6%;top:40px;pointer-events:none;animation:drift3 9.5s ease-in-out infinite" />
+
+      <div style="max-width:1080px;margin:0 auto;padding:96px var(--space-8) var(--space-8);position:relative">
+        <h6 style="color:#d6483e;margin:0 0 var(--space-3)">Húsznegyven Egyesület · Budaörs, Hungary</h6>
+        <h1 style="margin:0;font-size:180px;line-height:0.82;letter-spacing:-0.01em;color:#4b8f7d;position:relative;display:inline-block">2040<img src="assets/flower-yellow.png" alt="" style="position:absolute;width:110px;left:366px;top:76px;pointer-events:none;animation:drift1 8s ease-in-out infinite" /></h1>
+        <p style="font-size:17px;line-height:1.55;max-width:60ch;margin:var(--space-6) 0 0;opacity:0.85">Húsznegyven Egyesület is a civil organisation working at the intersection of architecture, urban planning and local community building. For fifteen years they have been organising talks, exhibitions, concerts and workshops to get residents engaged with their built environment.</p>
+      </div>
+
+      <div style="max-width:1080px;margin:0 auto;padding:0 var(--space-8) var(--space-8)">
+        <div class="grid-2" style="border-top:1px solid rgba(57,53,30,0.25);padding-top:var(--space-6);display:grid;grid-template-columns:1fr 1.15fr;gap:var(--space-8);align-items:center">
+          <div style="min-width:0">
+            <h6 style="color:#d6483e;margin:0 0 var(--space-2)">Workshops</h6>
+            <h3 style="margin:0 0 var(--space-4)">Design and architecture, for children</h3>
+            <p style="font-size:17px;line-height:1.55;opacity:0.85;margin:0">I began six years ago as a young teacher and summer-camp leader, giving presentations on design and architecture to children aged 6-12.</p>
+          </div>
+          <img src="assets/2040-cardboard-models.jpeg" alt="Cardboard model apartments built by the children, furnished with hand-made lamps, plants and furniture" style="width:100%;display:block;min-width:0" />
         </div>
       </div>
-      <div style="padding:var(--space-8);background:#e6e5e1">
-      <div style="display:grid;grid-template-columns:1.3fr 1fr;gap:var(--space-8);align-items:stretch">
-        <div style="display:flex;flex-direction:column;gap:var(--space-4)">
-          <p style="font-size:17px;max-width:52ch;opacity:0.85;margin:0"><span style="color:#d6483e">Húsznegyven Egyesület</span> is a civic organization in Budaörs, Hungary, working at the intersection of architecture, urban planning and local community-building. They run exhibitions, talks, workshops and community design sessions to get residents engaged with their built environment, host concerts, theatre, film and PechaKucha nights, and run a year-round architecture club and summer camps for kids. Their home base, the Zichy Major complex, holds a 200m² exhibition space, a café and a courtyard that doubles as an incubator for local initiatives.</p>
-          <p style="font-size:17px;max-width:52ch;opacity:0.85;margin:0">I worked with them on <em>POZITÍV — Építész Szüret 9</em>, an exhibition on urban sustainability and public wellbeing built around Scandinavian best-practice examples across five themes — healthy city, circular city, low-carbon city, movement-based city and resilient city. I helped turn those five themes into a gamified, interactive installation inviting locals to map them onto real sites in Budaörs, and designed posters for several of their events.</p>
-        </div>
-        <div style="background:var(--color-surface);overflow:hidden">
-          <img src="assets/2040-postcards.jpeg" alt="Illustrated postcards from the gamification project" style="width:100%;height:100%;object-fit:cover" />
+
+      <div style="max-width:1080px;margin:0 auto;padding:0 var(--space-8) var(--space-8)">
+        <div style="border-top:1px solid rgba(57,53,30,0.25);padding-top:var(--space-6)">
+          <div style="max-width:60ch">
+            <h6 style="color:#d6483e;margin:0 0 var(--space-2)">PIZITÍV</h6>
+            <h3 style="margin:0 0 var(--space-4)">Exhibition</h3>
+            <p style="font-size:17px;line-height:1.55;opacity:0.85;margin:0">PIZITÍV took on urban sustainability and public wellbeing through Scandinavian best-practice examples, across five themes: the healthy city, the low-carbon city, the movement-based city, the resilient city. I helped turn those themes into a gamified, interactive installation that invited locals to map them onto real sites in Budaörs.</p>
+          </div>
+          <div class="grid-2" style="display:grid;grid-template-columns:1fr 1fr;gap:var(--space-6);margin-top:var(--space-6);align-items:start">
+            <img src="assets/2040-stickersheet.jpeg" alt="Visitors walking through the PIZITÍV installation" style="width:100%;display:block;min-width:0" />
+            <img src="assets/2040-postcards.jpeg" alt="Illustrated postcards designed for the association's events" style="width:100%;display:block;min-width:0" />
+          </div>
         </div>
       </div>
+
+      <div style="max-width:1080px;margin:0 auto;padding:0 var(--space-8) var(--space-8)">
+        <div style="border-top:1px solid rgba(57,53,30,0.25);padding-top:var(--space-6)">
+          <div style="max-width:60ch">
+            <h6 style="color:#d6483e;margin:0 0 var(--space-2)">Print</h6>
+            <h3 style="margin:0 0 var(--space-4)">Designs and posters</h3>
+            <p style="font-size:17px;line-height:1.55;opacity:0.85;margin:0">Alongside the workshops I designed posters and printed matter for a number of their events, doing the same job as the games: making architecture feel approachable.</p>
+          </div>
+          <div class="grid-2" style="display:grid;grid-template-columns:1fr 1fr;gap:var(--space-6);margin-top:var(--space-6);align-items:start;max-width:760px">
+            <img src="assets/2040-poster-2050.jpg" alt="Poster for the 2050 model competition: hanging plants, dome-covered landscape and a QR code" style="width:100%;display:block;min-width:0" />
+            <img src="assets/2040-poster-lombhaz.png" alt="LOMB//HÁZ poster: an illustrated tree with an orange birdhouse on a yellow ground" style="width:100%;display:block;min-width:0" />
+          </div>
+        </div>
       </div>
     </div>
   </section>
 
-  <!-- FESTIVAL / BLÅ SOL -->
+  <!-- BLÅ SOL -->
   <section class="page" data-page="festival">
-    <div>
-      <div style="padding:var(--space-8);background:#e6e5e1">
-        <button class="back-btn" aria-label="Back" data-go="home" style="margin-bottom:var(--space-4)">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#39351e" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
-        </button>
-        <div style="display:grid;grid-template-columns:1.3fr 1fr;gap:var(--space-8);align-items:stretch">
-          <div>
-            <h6 style="color:#39351e">App design</h6>
-            <h1 style="margin-bottom:var(--space-4)">Blå Sol</h1>
-            <p style="font-size:17px;max-width:52ch;opacity:0.85;margin:0">Blå Sol is a non-profit, volunteer-run music festival in Randers built on community, nostalgia and summer vibes. Working with a teammate, I designed a companion app aimed at drawing in more 18+ visitors — a loyalty-points system, a filterable event schedule and festival-ground wayfinding, all wrapped in a bold pink-and-navy identity built around Bowlby One and Poppins.</p>
+    <div style="background:#e6e5e1;position:relative">
+      <button class="back-btn" aria-label="Back" data-go="home" style="position:fixed;top:24px;left:24px;z-index:20">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#39351e" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
+      </button>
+
+      <div style="max-width:1160px;margin:0 auto;padding:88px var(--space-8) var(--space-6)">
+        <h6 style="color:#39351e;margin:0 0 var(--space-2)">App design · UX case study</h6>
+        <h1 style="margin:0;font-size:104px;line-height:0.95;letter-spacing:0.01em;color:#d6483e">BLÅ SOL</h1>
+        <p style="font-size:26px;line-height:1.15;margin:var(--space-3) 0 0;color:#4b8f7d;font-weight:700;max-width:26ch">Gamifying sustainable behaviour at festivals</p>
+
+        <div class="grid-2" style="display:grid;grid-template-columns:1.25fr 1fr;gap:var(--space-8);align-items:start;margin-top:var(--space-6)">
+          <div style="display:flex;flex-direction:column;gap:var(--space-4)">
+            <p style="font-size:17px;line-height:1.5;opacity:0.85;margin:0;max-width:56ch">Blå Sol Festival is rooted in Randers and built on local initiative, volunteering and collaboration. The festival was created with the aim of bringing people together around music and cultural experiences in East Jutland.</p>
+            <div class="meta-row"><span>Client</span><span>Blå Sol Festival</span></div>
+            <div class="meta-row"><span>Role</span><span>UX Research, UI/UX Design, Web development</span></div>
+            <div class="meta-row"><span>Duration</span><span>4 weeks</span></div>
+            <div class="meta-row"><span>Date</span><span>May 2026</span></div>
+            <div class="meta-row"><span>Tools</span><span>Figma, FigJam, VS Code, Procreate</span></div>
           </div>
-          <div style="background:var(--color-surface);overflow:hidden;align-self:start;height:94%">
-            <img src="assets/blasol-styletile.png" alt="Blå Sol style tile — fonts, buttons, icons, color palette" style="width:100%;height:100%;object-fit:cover" />
+          <img src="assets/blasol-mockup.png" alt="Two iPhones showing the Blå Sol app home and map screens" style="width:100%;display:block" />
+        </div>
+      </div>
+
+      <div style="max-width:1160px;margin:0 auto;padding:0 var(--space-8) var(--space-8);position:relative">
+        <div class="grid-2" style="display:grid;grid-template-columns:1fr 1fr;gap:var(--space-8);border-top:1px solid rgba(57,53,30,0.25);padding-top:var(--space-6);position:relative">
+          <div>
+            <h3 style="margin:0 0 var(--space-3);color:#d6483e">The challenge</h3>
+            <p style="font-size:17px;line-height:1.5;opacity:0.85;margin:0">Blå Sol Festival wanted to encourage more sustainable behaviour among attendees. Many guests left cups and waste behind despite existing recycling initiatives. The challenge was to create a gamified digital solution that would motivate young adults to actively participate in waste collection and cup returns.</p>
+          </div>
+          <div style="position:relative;padding-bottom:80px">
+            <h3 style="margin:0 0 var(--space-3);color:#d6483e">The goal</h3>
+            <p style="font-size:17px;line-height:1.5;opacity:0.85;margin:0">How can Blå Sol Festival motivate participants aged 18–25 to responsibly collect and dispose of waste through a gamified digital solution?</p>
+            <img src="assets/blasol-waste-3.png" alt="Tied-off bag of festival waste" style="width:56px;height:auto;display:block;position:absolute;right:120px;bottom:10px" />
+            <img src="assets/blasol-waste-1.png" alt="Crushed plastic bottle" style="width:70px;height:auto;display:block;position:absolute;right:60px;bottom:0" />
+            <img src="assets/blasol-waste-2.png" alt="Discarded plastic bag" style="width:90px;height:auto;display:block;position:absolute;right:-10px;bottom:16px" />
           </div>
         </div>
-        <div style="display:flex;gap:24px;justify-content:center;margin-top:var(--space-6);padding:0 var(--space-8);flex-wrap:nowrap;max-width:1200px;margin-left:auto;margin-right:auto">
-          <div style="flex:0 0 calc((100% - 48px) / 3);max-width:calc((100% - 48px) / 3);overflow:hidden;border-radius:30pt;background:var(--color-surface);box-sizing:border-box">
-            <img src="assets/blasol-home.png" alt="Blå Sol app — home screen (points &amp; leaderboard)" style="width:100%;height:auto;display:block;border-radius:40pt" />
-          </div>
+      </div>
 
-          <div style="flex:0 0 calc((100% - 48px) / 3);max-width:calc((100% - 48px) / 3);overflow:hidden;border-radius:30pt;background:var(--color-surface);box-sizing:border-box">
-            <img src="assets/blasol-events.png" alt="Blå Sol app — events schedule" style="width:100%;height:auto;display:block;border-radius:40pt" />
-          </div>
+      <div style="max-width:1160px;margin:0 auto;padding:0 var(--space-8) var(--space-8)">
+        <div style="display:flex;flex-wrap:wrap;gap:var(--space-4);justify-content:center;align-items:center;border-top:1px solid rgba(57,53,30,0.25);padding-top:var(--space-6)">
+          <a href="#blasol-discover" class="phase-flower" style="animation:drift1 7s ease-in-out infinite"><img src="assets/flower-yellow.png" alt="" /><span>Discover</span></a>
+          <a href="#blasol-define" class="phase-flower" style="animation:drift2 8.5s ease-in-out infinite"><img src="assets/flower-red.png" alt="" /><span>Define</span></a>
+          <a href="#blasol-develop" class="phase-flower" style="animation:drift3 9.5s ease-in-out infinite"><img src="assets/flower-blue.png" alt="" /><span>Develop</span></a>
+          <a href="#blasol-deliver" class="phase-flower" style="animation:drift2 7.5s ease-in-out infinite"><img src="assets/flower-yellow.png" alt="" /><span>Deliver</span></a>
+        </div>
+      </div>
 
-          <div style="flex:0 0 calc((100% - 48px) / 3);max-width:calc((100% - 48px) / 3);overflow:hidden;border-radius:40pt;background:var(--color-surface);box-sizing:border-box">
-            <img src="assets/blasol-map.png" alt="Blå Sol app — festival map" style="width:100%;height:auto;display:block;border-radius:40pt" />
+      <div style="max-width:1160px;margin:0 auto;padding:0 var(--space-8) var(--space-8);display:flex;flex-direction:column;gap:var(--space-6)">
+        <div id="blasol-discover" style="text-align:center;position:relative;scroll-margin-top:24px;background-color:#EED25D;padding:var(--space-6)">
+          <h6 style="color:#3A351E;margin:0 0 var(--space-2)">Discover</h6>
+          <h3 style="margin:0 0 var(--space-3)">Desk research, interviews, affinity diagram</h3>
+          <p style="font-size:17px;line-height:1.5;opacity:0.85;margin:0 auto;max-width:70ch">We started with the discovering phase: desk research, 21 interviews with the target audience, plus conversations with people who have experience organising festivals. From the interview answers we built an affinity diagram to cluster what we heard.</p>
+          <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:var(--space-6);margin-top:var(--space-6);justify-items:center">
+            <figure style="margin:0"><img src="assets/blasol-deskresearch.png" alt="Desk research collage of festival ticketing and Gen Z audience sources" style="width:100%;max-width:221px;display:block;background:#fff"><figcaption style="font-size:15px;color:#39351e;margin:var(--space-2) 0 0">Desk research</figcaption></figure>
+            <figure style="margin:0"><img src="assets/blasol-interviews.png" alt="Wall of colour-coded interview notes from 21 participants" style="width:100%;max-width:221px;display:block;background:#fff"><figcaption style="font-size:15px;color:#39351e;margin:var(--space-2) 0 0">21 interviews</figcaption></figure>
+            <figure style="margin:0"><img src="assets/blasol-affinity.png" alt="Affinity diagram clustering interview insights into seven themes" style="width:100%;max-width:221px;display:block;background:#fff"><figcaption style="font-size:15px;color:#39351e;margin:var(--space-2) 0 0">Affinity diagram</figcaption></figure>
           </div>
+        </div>
+
+        <div id="blasol-define" style="text-align:center;padding:var(--space-6) var(--space-6) var(--space-8);scroll-margin-top:24px;background-color:#D6493F">
+          <h6 style="color:#E6E5E1;margin:0 0 var(--space-2)">Define</h6>
+          <h3 style="margin:0 0 var(--space-3);color:#E6E5E1">Conclusion and persona</h3>
+          <p style="font-size:17px;line-height:1.5;opacity:0.85;margin:0 auto;max-width:70ch;color:#E6E5E1">After identifying key insights and patterns from our research, we created a persona to define our target user and better understand their needs, goals and motivations.</p>
+          <figure style="margin:var(--space-6) auto 0;max-width:537px"><img src="assets/blasol-persona.png" alt="Persona board for Frida Amelia Larsen with bio, goals, behaviours and business objectives" style="width:100%;display:block"><figcaption style="font-size:15px;opacity:0.7;margin:var(--space-2) 0 0;color:#E6E5E1">Persona — Frida Amelia Larsen, 21, university student and barista in Aarhus</figcaption></figure>
+        </div>
+
+        <div id="blasol-develop" style="text-align:center;scroll-margin-top:24px;background-color:#2f6154;padding:var(--space-6) var(--space-6) var(--space-8)">
+          <h6 style="color:#E6E5E1;margin:0 0 var(--space-2)">Develop</h6>
+          <h3 style="margin:0 0 var(--space-3);color:#E6E5E1">Wireframing and prototyping</h3>
+          <p style="font-size:17px;line-height:1.5;margin:0 auto;max-width:70ch;color:#E6E5E1">After defining our target user, we developed and iterated on concepts through wireframing and prototyping — translating user needs into a functional and engaging solution. Early sketches and low-fidelity wireframes helped explore ideas quickly and shape the core user flow.</p>
+          <div style="display:flex;flex-wrap:wrap;justify-content:center;align-items:flex-end;gap:20px;margin-top:var(--space-6)">
+            <figure style="margin:0"><img src="assets/blasol-sketch-1.png" alt="Pencil sketch of the home screen with points and leaderboard" style="height:225px;width:auto;display:block"><figcaption style="font-size:15px;color:#E6E5E1;margin:var(--space-2) 0 0;opacity:0.7">Home sketch</figcaption></figure>
+            <figure style="margin:0"><img src="assets/blasol-sketch-2.png" alt="Pen sketch of the scan-the-bin screen" style="height:225px;width:auto;display:block"><figcaption style="font-size:15px;color:#E6E5E1;margin:var(--space-2) 0 0;opacity:0.7">Scan the bin</figcaption></figure>
+            <figure style="margin:0"><img src="assets/blasol-sketch-3.png" alt="Pencil sketch of the profile screen and points maths" style="height:225px;width:auto;display:block"><figcaption style="font-size:15px;color:#E6E5E1;margin:var(--space-2) 0 0;opacity:0.7">Profile &amp; points</figcaption></figure>
+            <figure style="margin:0"><img src="assets/blasol-wireframes.png" alt="Greyscale wireframes of ten app screens" style="height:225px;width:auto;display:block;object-fit:contain"><figcaption style="font-size:15px;color:#E6E5E1;margin:var(--space-2) 0 0;opacity:0.7">Low-fidelity wireframes</figcaption></figure>
+          </div>
+          <figure style="margin:var(--space-6) auto 0;max-width:520px;background:#e6e5e1;padding:var(--space-4)">
+            <img src="assets/blasol-styletile-full.png" alt="Blå Sol style tile: fonts, buttons, icons, colour palette" style="width:100%;display:block">
+          </figure>
+          <p style="font-size:17px;line-height:1.5;margin:var(--space-4) auto 0;max-width:70ch;color:#E6E5E1">The style tile defined the visual direction, bringing together the colours, typography, imagery and overall mood.</p>
+        </div>
+      </div>
+
+      <div id="blasol-deliver" style="text-align:center;max-width:900px;margin:0 auto;padding:0 var(--space-8) var(--space-8);scroll-margin-top:24px">
+        <h6 style="color:#39351e;margin:0 0 var(--space-2)">Deliver</h6>
+        <h3 style="margin:0 0 var(--space-6)">The final app</h3>
+        <figure style="margin:0"><img src="assets/blasol-screens-all.png" alt="All fifteen final Blå Sol app screens" style="width:100%;display:block"><figcaption style="font-size:15px;opacity:0.7;margin:var(--space-2) 0 0">The full screen set — onboarding, home, events, bin hunt, discounts, map and profile</figcaption></figure>
+        <div style="display:flex;justify-content:center;margin-top:var(--space-6)">
+          <a href="https://www.figma.com/proto/fG8MPc5AkzOtloHJurds8K/fasztiv%C3%A1l?node-id=38-349&amp;t=Na0XX1kb0j7I2emv-1" target="_blank" rel="noopener" class="pill-btn pill-btn-blasol">View the prototype</a>
+        </div>
+      </div>
+
+      <div style="max-width:1160px;margin:0 auto;padding:0 var(--space-8) var(--space-8)">
+        <div style="border-top:1px solid rgba(57,53,30,0.25);padding-top:var(--space-6);max-width:76ch;margin:0 auto;display:flex;flex-direction:column;gap:var(--space-4)">
+          <h3 style="margin:0;color:#d6483e">What we learned</h3>
+          <p style="font-size:17px;line-height:1.5;opacity:0.85;margin:0">Throughout this project, we learned how research-driven design can be used to address real-world challenges in a meaningful way. One of the key learnings was the importance of validating assumptions through research. While gamification initially appeared to be a suitable approach, our findings helped us understand how reward systems can influence user behaviour and encourage more responsible actions.</p>
+          <p style="font-size:17px;line-height:1.5;opacity:0.85;margin:0">At the same time, we recognized the limitations of designing without access to a real festival environment. Future testing would be essential to evaluate the long-term effectiveness of the reward system and identify opportunities for further improvement.</p>
+          <p style="font-size:17px;line-height:1.5;opacity:0.85;margin:0">Overall, this project strengthened our understanding of the UX design process and demonstrated how digital solutions can contribute to more sustainable and engaging experiences when they are built around genuine user and organizational needs.</p>
         </div>
       </div>
     </div>
@@ -159,53 +311,52 @@ html, body { height: 100%; margin: 0; }
   <!-- ARTS -->
   <section class="page" data-page="arts">
     <div style="position:relative;background:#e6e5e1">
-      <img src="assets/flower-red.png" alt="" style="position:absolute;width:180px;left:4%;top:2%;pointer-events:none" />
-      <img src="assets/flower-yellow.png" alt="" style="position:absolute;width:200px;right:5%;top:20%;pointer-events:none" />
-      <img src="assets/flower-blue.png" alt="" style="position:absolute;width:190px;left:8%;bottom:6%;pointer-events:none" />
-      <img src="assets/flower-red.png" alt="" style="position:absolute;width:160px;right:10%;bottom:2%;pointer-events:none" />
-      <img src="assets/flower-yellow.png" alt="" style="position:absolute;width:150px;left:22%;top:12%;pointer-events:none" />
-      <img src="assets/flower-blue.png" alt="" style="position:absolute;width:170px;right:28%;top:4%;pointer-events:none" />
-      <img src="assets/flower-red.png" alt="" style="position:absolute;width:150px;left:15%;top:38%;pointer-events:none" />
-      <img src="assets/flower-yellow.png" alt="" style="position:absolute;width:180px;right:6%;bottom:30%;pointer-events:none" />
-      <img src="assets/flower-blue.png" alt="" style="position:absolute;width:160px;left:42%;bottom:10%;pointer-events:none" />
-      <img src="assets/flower-red.png" alt="" style="position:absolute;width:150px;left:30%;top:58%;pointer-events:none" />
-      <img src="assets/flower-yellow.png" alt="" style="position:absolute;width:170px;right:20%;top:62%;pointer-events:none" />
-      <img src="assets/flower-blue.png" alt="" style="position:absolute;width:150px;left:60%;top:68%;pointer-events:none" />
+      <img src="assets/flower-red.png" alt="" style="position:absolute;width:180px;left:4%;top:2%;pointer-events:none">
+      <img src="assets/flower-yellow.png" alt="" style="position:absolute;width:200px;right:5%;top:20%;pointer-events:none">
+      <img src="assets/flower-blue.png" alt="" style="position:absolute;width:190px;left:8%;bottom:6%;pointer-events:none">
+      <img src="assets/flower-red.png" alt="" style="position:absolute;width:160px;right:10%;bottom:2%;pointer-events:none">
+      <img src="assets/flower-yellow.png" alt="" style="position:absolute;width:150px;left:22%;top:12%;pointer-events:none">
+      <img src="assets/flower-blue.png" alt="" style="position:absolute;width:170px;right:28%;top:4%;pointer-events:none">
+      <img src="assets/flower-red.png" alt="" style="position:absolute;width:150px;left:15%;top:38%;pointer-events:none">
+      <img src="assets/flower-yellow.png" alt="" style="position:absolute;width:180px;right:6%;bottom:30%;pointer-events:none">
+      <img src="assets/flower-blue.png" alt="" style="position:absolute;width:160px;left:42%;bottom:10%;pointer-events:none">
+      <img src="assets/flower-red.png" alt="" style="position:absolute;width:150px;left:30%;top:58%;pointer-events:none">
+      <img src="assets/flower-yellow.png" alt="" style="position:absolute;width:170px;right:20%;top:62%;pointer-events:none">
+      <img src="assets/flower-blue.png" alt="" style="position:absolute;width:150px;left:60%;top:68%;pointer-events:none">
       <div style="padding:var(--space-8);position:relative">
         <button class="back-btn" aria-label="Back" data-go="home" style="margin-bottom:var(--space-4)">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#39351e" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
         </button>
-        <h6 style="color:#39351e">Illustration series</h6>
         <h1 style="margin-bottom:var(--space-6)">Arts</h1>
 
         <h2 style="margin-bottom:var(--space-2)">Figure drawings</h2>
-        <p style="font-size:17px;max-width:60ch;opacity:0.85;margin-bottom:var(--space-6)">Charcoal and pencil life-drawing studies from figure sessions — working from observation on pose, weight and light.</p>
+        <p style="font-size:17px;max-width:60ch;opacity:0.85;margin-bottom:var(--space-6)">Charcoal life-drawing studies from figure sessions, working from observation on pose, weight and light.</p>
         <div style="display:grid;grid-template-columns:repeat(5,1fr);gap:var(--space-4)">
-          <div style="background:var(--color-surface);aspect-ratio:3/4;overflow:hidden"><img src="assets/figure-1.jpg" alt="Charcoal figure drawing, seated male model" style="width:100%;height:100%;object-fit:cover" /></div>
-          <div style="background:var(--color-surface);aspect-ratio:3/4;overflow:hidden"><img src="assets/figure-2.jpg" alt="Charcoal figure drawing, seated female model" style="width:100%;height:100%;object-fit:cover" /></div>
-          <div style="background:var(--color-surface);aspect-ratio:3/4;overflow:hidden"><img src="assets/figure-3.jpg" alt="Charcoal figure drawing, seated male model on stool" style="width:100%;height:100%;object-fit:cover" /></div>
-          <div style="background:var(--color-surface);aspect-ratio:3/4;overflow:hidden"><img src="assets/figure-4.jpg" alt="Charcoal portrait study" style="width:100%;height:100%;object-fit:cover" /></div>
-          <div style="background:var(--color-surface);aspect-ratio:3/4;overflow:hidden"><img src="assets/figure-5.jpg" alt="Charcoal figure drawing, seated model on block" style="width:100%;height:100%;object-fit:cover" /></div>
+          <div style="background:var(--color-surface);aspect-ratio:3/4;overflow:hidden"><img src="assets/figure-1.png" alt="Charcoal figure drawing, seated male model" style="width:100%;height:100%;object-fit:cover"></div>
+          <div style="background:var(--color-surface);aspect-ratio:3/4;overflow:hidden"><img src="assets/figure-2.png" alt="Charcoal figure drawing, seated female model" style="width:100%;height:100%;object-fit:cover"></div>
+          <div style="background:var(--color-surface);aspect-ratio:3/4;overflow:hidden"><img src="assets/figure-3.png" alt="Charcoal figure drawing, seated male model on stool" style="width:100%;height:100%;object-fit:cover"></div>
+          <div style="background:var(--color-surface);aspect-ratio:3/4;overflow:hidden"><img src="assets/figure-4.png" alt="Charcoal portrait study" style="width:100%;height:100%;object-fit:cover"></div>
+          <div style="background:var(--color-surface);aspect-ratio:3/4;overflow:hidden"><img src="assets/figure-5.png" alt="Charcoal figure drawing, seated model on block" style="width:100%;height:100%;object-fit:cover"></div>
         </div>
 
         <h2 style="margin-top:var(--space-8);margin-bottom:var(--space-2)">Street sketches</h2>
-        <p style="font-size:17px;max-width:60ch;opacity:0.85;margin-bottom:var(--space-6)">Buildings drawn on location — quick pen sketches and a colored-pencil study of an old market hall.</p>
+        <p style="font-size:17px;max-width:60ch;opacity:0.85;margin-bottom:var(--space-6)">Buildings drawn on location - quick pen sketches and a colored-pencil study</p>
         <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:var(--space-4)">
-          <div style="background:var(--color-surface);aspect-ratio:3/4;overflow:hidden"><img src="assets/sketch-aarhus.jpg" alt="Colored pencil sketch of a brick building" style="width:100%;height:100%;object-fit:cover" /></div>
-          <div style="background:var(--color-surface);aspect-ratio:3/4;overflow:hidden"><img src="assets/sketch-deli1.jpg" alt="Pen sketch of a waterfront street" style="width:100%;height:100%;object-fit:cover" /></div>
-          <div style="background:var(--color-surface);aspect-ratio:3/4;overflow:hidden"><img src="assets/sketch-deli2.jpg" alt="Pen sketch of a building facade" style="width:100%;height:100%;object-fit:cover" /></div>
-          <div style="background:var(--color-surface);aspect-ratio:3/4;overflow:hidden"><img src="assets/sketch-lukacs.jpg" alt="Pen sketch of a colonnaded building entrance" style="width:100%;height:100%;object-fit:cover" /></div>
-          <div style="background:var(--color-surface);aspect-ratio:3/4;overflow:hidden"><img src="assets/sketch-otepeshaz.jpg" alt="Pen sketch of a colonnaded building entrance, alternate angle" style="width:100%;height:100%;object-fit:cover" /></div>
-          <div style="background:var(--color-surface);aspect-ratio:3/4;overflow:hidden"><img src="assets/sketch-untitled2.jpg" alt="Pen sketch of city buildings" style="width:100%;height:100%;object-fit:cover" /></div>
+          <div style="background:var(--color-surface);aspect-ratio:3/4;overflow:hidden"><img src="assets/sketch-otepeshaz.png" alt="Pen sketch of a colonnaded building entrance, alternate angle" style="width:100%;height:100%;object-fit:cover"></div>
+          <div style="background:var(--color-surface);aspect-ratio:3/4;overflow:hidden"><img src="assets/sketch-deli2.png" alt="Pen sketch of a building facade" style="width:100%;height:100%;object-fit:cover"></div>
+          <div style="background:var(--color-surface);aspect-ratio:3/4;overflow:hidden"><img src="assets/sketch-lukacs.png" alt="Pen sketch of a colonnaded building entrance" style="width:100%;height:100%;object-fit:cover"></div>
+          <div style="background:var(--color-surface);aspect-ratio:3/4;overflow:hidden"><img src="assets/sketch-aarhus.png" alt="Colored pencil sketch of a brick building" style="width:100%;height:100%;object-fit:cover"></div>
+          <div style="background:var(--color-surface);aspect-ratio:3/4;overflow:hidden"><img src="assets/sketch-untitled2.png" alt="Pen sketch of city buildings" style="width:100%;height:100%;object-fit:cover"></div>
+          <div style="background:var(--color-surface);aspect-ratio:3/4;overflow:hidden"><img src="assets/sketch-deli1.png" alt="Pen sketch of a waterfront street" style="width:100%;height:100%;object-fit:cover"></div>
         </div>
 
         <h2 style="margin-top:var(--space-8);margin-bottom:var(--space-2)">Posters</h2>
         <p style="font-size:17px;max-width:60ch;opacity:0.85;margin-bottom:var(--space-6)">Event posters for talks, exhibitions and competitions.</p>
         <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:var(--space-4)">
-          <div style="background:var(--color-surface);aspect-ratio:3/4;overflow:hidden"><img src="assets/poster-szendvics-week.jpg" alt="Poster for Szendvics week event, illustrated sandwich ingredients" style="width:100%;height:100%;object-fit:cover" /></div>
-          <div style="background:var(--color-surface);aspect-ratio:3/4;overflow:hidden"><img src="assets/poster-forest.png" alt="Poster — night forest with treehouses" style="width:100%;height:100%;object-fit:cover" /></div>
-          <div style="background:var(--color-surface);aspect-ratio:3/4;overflow:hidden"><img src="assets/poster-hangunk.png" alt="Poster — &quot;Hol a hangunk&quot;, torn-paper collage" style="width:100%;height:100%;object-fit:cover" /></div>
-          <div style="background:var(--color-surface);aspect-ratio:3/4;overflow:hidden"><img src="assets/poster-trippi-troppi.jpg" alt="Poster for Mi lesz a kertedben 2050-ben model competition" style="width:100%;height:100%;object-fit:cover" /></div>
+          <div style="background:var(--color-surface);aspect-ratio:3/4;overflow:hidden"><img src="assets/poster-szendvics-week.png" alt="Poster for Szendvics week event, illustrated sandwich ingredients" style="width:100%;height:100%;object-fit:cover"></div>
+          <div style="background:var(--color-surface);aspect-ratio:3/4;overflow:hidden"><img src="assets/poster-forest.png" alt="Poster illustration of a night forest with treehouses" style="width:100%;height:100%;object-fit:cover"></div>
+          <div style="background:var(--color-surface);aspect-ratio:3/4;overflow:hidden"><img src="assets/poster-szendvics.png" alt="Poster titled Hol a hangunk, torn-paper and collage style" style="width:100%;height:100%;object-fit:cover"></div>
+          <div style="background:var(--color-surface);aspect-ratio:3/4;overflow:hidden"><img src="assets/poster-trippi-troppi.png" alt="Poster for Mi lesz a kertedben 2050-ben model competition" style="width:100%;height:100%;object-fit:cover"></div>
         </div>
       </div>
     </div>
@@ -213,28 +364,98 @@ html, body { height: 100%; margin: 0; }
 
   <!-- COFFEE & CONNECT -->
   <section class="page" data-page="coffee">
-    <div>
-      <div style="padding:var(--space-8);background:#f4e3d3">
-        <button class="back-btn" aria-label="Back" data-go="home" style="border-color:#e8571b;color:#e8571b;margin-bottom:var(--space-4)">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#e8571b" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
-        </button>
-        <div style="display:grid;grid-template-columns:1.3fr 1fr;gap:var(--space-8);align-items:stretch">
+    <div style="background:#f4e3d3;position:relative">
+      <button class="back-btn" aria-label="Back" data-go="home" style="position:fixed;top:24px;left:24px;z-index:20;border-color:#e8571b;color:#e8571b">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#e8571b" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
+      </button>
+
+      <div style="max-width:1160px;margin:0 auto;padding:88px var(--space-8) var(--space-6)">
+        <div class="grid-2" style="display:grid;grid-template-columns:1.3fr 1fr;gap:var(--space-6);align-items:start">
           <div>
-            <div>
-              <h6 style="color:#e8571b">UX / web design</h6>
-              <h1 style="margin-bottom:var(--space-4);color:#e8571b">Coffee & Connect</h1>
-              <p style="font-size:17px;opacity:0.85;margin:0">An exam project for young coffee enthusiasts in Aarhus who want to discover high-quality cafés and connect with others who share the same passion. Desk research into local cafés (mapped by atmosphere, price, quality and accessibility) shaped a website where users explore cafés with confidence, arrange coffee meet-ups, join café-organized events, and share their own experiences and photos in a profile.</p>
-            </div>
-            <div style="background:var(--color-surface);overflow:hidden;margin-top:var(--space-6)">
-              <img src="assets/coffee-home.png" alt="Coffee &amp; Connect — home screen illustration" style="width:100%;height:100%;object-fit:cover" />
-            </div>
-            <div style="background:var(--color-surface);overflow:hidden;margin-top:var(--space-6)">
-              <img src="assets/coffee-browse.png" alt="Browse cafés — La Cabra, Stiller's, Europa" style="width:100%;height:100%;object-fit:cover" />
+            <h6 style="color:#39351e;margin:0 0 var(--space-2)">UX / web design · case study</h6>
+            <p style="font-size:26px;line-height:1.15;max-width:24ch;margin:var(--space-3) 0 0;color:#FA5607;font-weight:700">Finding good coffee, and people to drink it with</p>
+            <p style="font-size:17px;line-height:1.5;opacity:0.85;margin:var(--space-4) 0 0;max-width:56ch">An exam project for young coffee enthusiasts in Aarhus who want to discover high-quality cafés and connect with others who share the same passion.</p>
+            <div style="margin-top:var(--space-4)">
+              <div class="meta-row"><span>Project</span><span>Exam project</span></div>
+              <div class="meta-row"><span>Role</span><span>UX Research, UI/UX Design, Web development</span></div>
+              <div class="meta-row"><span>Place</span><span>Aarhus, Denmark</span></div>
+              <div class="meta-row"><span>Tools</span><span>Figma, VS Code, Procreate</span></div>
             </div>
           </div>
-          <div style="background:var(--color-surface);overflow:hidden">
-            <img src="assets/coffee-lacabra.png" alt="La Cabra café detail page" style="width:100%;height:100%;object-fit:cover" />
+          <img src="assets/coffee-logo.png" alt="Coffee &amp; Connect logo: a coffee cup with hand-lettered wordmark" style="width:100%;max-width:320px;display:block;margin:0 auto" />
+        </div>
+      </div>
+
+      <div style="max-width:1160px;margin:0 auto;padding:0 var(--space-8) var(--space-8)">
+        <div class="grid-2" style="display:grid;grid-template-columns:1fr 1fr;gap:var(--space-8);border-top:1px solid rgba(57,53,30,0.25);padding-top:var(--space-6)">
+          <div>
+            <h3 style="margin:0 0 var(--space-3);color:#e8571b">The challenge</h3>
+            <p style="font-size:17px;line-height:1.5;opacity:0.85;margin:0">Aarhus has a dense speciality-coffee scene, but newcomers have no easy way to tell which café fits the moment — the atmosphere, the price level, the quality, whether it is easy to get to. And drinking coffee is social, yet there was nowhere to find other people who care about it as much.</p>
           </div>
+          <div>
+            <h3 style="margin:0 0 var(--space-3);color:#e8571b">The goal</h3>
+            <p style="font-size:17px;line-height:1.5;opacity:0.85;margin:0">How can young coffee enthusiasts in Aarhus discover high-quality cafés with confidence and connect with others who share the same passion?</p>
+          </div>
+        </div>
+      </div>
+
+      <div style="max-width:1160px;margin:0 auto;padding:0 var(--space-8) var(--space-8)">
+        <div style="display:flex;flex-wrap:wrap;gap:var(--space-4);justify-content:center;align-items:center;border-top:1px solid rgba(57,53,30,0.25);padding-top:var(--space-6)">
+          <a href="#coffee-discover" class="phase-flower" style="animation:drift1 7s ease-in-out infinite"><img src="assets/flower-yellow.png" alt="" /><span>Discover</span></a>
+          <a href="#coffee-define" class="phase-flower" style="animation:drift2 8.5s ease-in-out infinite"><img src="assets/flower-red.png" alt="" /><span>Define</span></a>
+          <a href="#coffee-develop" class="phase-flower" style="animation:drift3 9.5s ease-in-out infinite"><img src="assets/flower-blue.png" alt="" /><span>Develop</span></a>
+          <a href="#coffee-deliver" class="phase-flower" style="animation:drift2 7.5s ease-in-out infinite"><img src="assets/flower-yellow.png" alt="" /><span>Deliver</span></a>
+        </div>
+      </div>
+
+      <div style="max-width:1160px;margin:0 auto;padding:0 var(--space-8) var(--space-8);display:flex;flex-direction:column;gap:var(--space-6)">
+        <div id="coffee-discover" style="text-align:center;scroll-margin-top:24px;background-color:#EED25D;padding:var(--space-6) var(--space-6) var(--space-8)">
+          <h6 style="color:#39351e;margin:0 0 var(--space-2)">Discover</h6>
+          <h3 style="margin:0 0 var(--space-3)">Mapping the Aarhus coffee scene</h3>
+          <p style="font-size:17px;line-height:1.5;opacity:0.85;margin:0 auto;max-width:70ch">Desk research into local cafés, mapped by atmosphere, price, quality and accessibility — the four things people actually weigh when choosing where to go.</p>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:var(--space-6);margin-top:var(--space-6);align-items:start;justify-items:center;max-width:900px;margin-left:auto;margin-right:auto">
+            <figure style="margin:0"><img src="assets/coffee-interviews.png" alt="Colour-coded interview notes from twelve coffee drinkers and baristas" style="width:100%;display:block"><figcaption style="font-size:15px;color:#39351e;margin:var(--space-2) 0 0">Interviews with baristas, students and café staff in Aarhus</figcaption></figure>
+            <figure style="margin:0"><img src="assets/coffee-cafes.png" alt="Desk research boards on La Cabra, Aoife, Europa Kaffe og Te and Stiller's" style="width:100%;display:block"><figcaption style="font-size:15px;color:#39351e;margin:var(--space-2) 0 0">Desk research on the four cafés — La Cabra, Aoife, Europa and Stiller's</figcaption></figure>
+          </div>
+        </div>
+
+        <div id="coffee-define" style="text-align:center;scroll-margin-top:24px;background-color:#D6493F;padding:var(--space-6) var(--space-6) var(--space-8)">
+          <h6 style="color:#f4e3d3;margin:0 0 var(--space-2)">Define</h6>
+          <h3 style="margin:0 0 var(--space-3);color:#f4e3d3">Who it is for</h3>
+          <p style="font-size:17px;line-height:1.5;margin:0 auto;max-width:70ch;color:#f4e3d3">Young coffee enthusiasts new to the city: curious, quality-driven, and looking for company as much as for a good cup.</p>
+          <div style="display:grid;grid-template-columns:1.4fr 1fr;gap:var(--space-6);margin-top:var(--space-6);align-items:start;justify-items:center;max-width:900px;margin-left:auto;margin-right:auto">
+            <figure style="margin:0"><img src="assets/coffee-valueprop.png" alt="Value Proposition Canvas with gains, pains, products and customer jobs" style="width:100%;display:block"><figcaption style="font-size:15px;color:#f4e3d3;margin:var(--space-2) 0 0">Value Proposition Canvas — what the site offers against what users need</figcaption></figure>
+            <figure style="margin:0"><img src="assets/coffee-persona.png" alt="Persona board for Mikkel Sørensen with goals, frustrations, quotes and values" style="width:100%;display:block"><figcaption style="font-size:15px;color:#f4e3d3;margin:var(--space-2) 0 0">Persona — Mikkel Sørensen, 25, architecture student and part-time barista</figcaption></figure>
+          </div>
+        </div>
+
+        <div id="coffee-develop" style="text-align:center;scroll-margin-top:24px;background-color:#4B8F7D;padding:var(--space-6) var(--space-6) var(--space-8)">
+          <h6 style="color:#e6e5e1;margin:0 0 var(--space-2)">Develop</h6>
+          <h3 style="margin:0 0 var(--space-3);color:#e6e5e1">Four things the site had to do</h3>
+          <p style="font-size:17px;line-height:1.5;margin:0 auto;max-width:70ch;color:#e6e5e1">Explore cafés with confidence, arrange coffee meet-ups, join café-organised events, and share your own experiences and photos in a profile.</p>
+          <div style="display:flex;flex-wrap:wrap;justify-content:center;align-items:flex-end;gap:28px;margin-top:var(--space-6)">
+            <figure style="margin:0"><img src="assets/coffee-sketch.png" alt="Pen sketch of the landing page, café grid and list layouts" style="height:280px;width:auto;display:block"><figcaption style="font-size:15px;color:#f4e3d3;margin:var(--space-2) 0 0">Layout sketches</figcaption></figure>
+            <figure style="margin:0"><img src="assets/coffee-logosketch.png" alt="Pencil sketches exploring the coffee-cup logo and CO&amp;CO mark" style="height:280px;width:auto;display:block"><figcaption style="font-size:15px;color:#f4e3d3;margin:var(--space-2) 0 0">Logo exploration</figcaption></figure>
+          </div>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:var(--space-6);margin:var(--space-6) auto 0;max-width:900px;align-items:start;justify-items:center">
+            <figure style="margin:0"><img src="assets/coffee-wireframes.png" alt="Site map from the index page through visit, cafés, info, events and profile" style="width:100%;display:block"><figcaption style="font-size:15px;color:#f4e3d3;margin:var(--space-2) 0 0">Site map</figcaption></figure>
+            <figure style="margin:0"><img src="assets/coffee-sitemap.png" alt="Greyscale wireframes of the first page, cafés, café page, profile, signup, log in and event page" style="width:100%;display:block"><figcaption style="font-size:15px;color:#f4e3d3;margin:var(--space-2) 0 0">Low-fidelity wireframes</figcaption></figure>
+          </div>
+        </div>
+      </div>
+
+      <div id="coffee-deliver" style="text-align:center;max-width:1160px;margin:0 auto;padding:0 var(--space-8) var(--space-8);scroll-margin-top:24px">
+        <h6 style="color:#39351e;margin:0 0 var(--space-2)">Deliver</h6>
+        <h3 style="margin:0 0 var(--space-6)">The final website</h3>
+        <div class="grid-2" style="display:grid;grid-template-columns:1.3fr 1fr;gap:var(--space-8);align-items:start;justify-items:center;max-width:900px;margin:0 auto">
+          <div style="display:flex;flex-direction:column;gap:var(--space-6);width:100%">
+            <figure style="margin:0;background:var(--color-surface);overflow:hidden"><img src="assets/coffee-home.png" alt="Coffee &amp; Connect home screen illustration" style="width:100%;display:block"></figure>
+            <figure style="margin:0;background:var(--color-surface);overflow:hidden"><img src="assets/coffee-browse.png" alt="Browse cafés screen listing La Cabra, Stiller's and Europa" style="width:100%;display:block"></figure>
+          </div>
+          <img src="assets/coffee-lacabra.png" alt="La Cabra café detail page" style="width:100%;max-width:258px;display:block;object-fit:cover" />
+        </div>
+        <div style="display:flex;justify-content:center;margin-top:var(--space-6)">
+          <a href="https://www.figma.com/proto/tfsTATVPne1FUcbPcp6Lvh/HIFI?node-id=0-1&amp;t=GNgd1kXB39pqw0O1-1" target="_blank" rel="noopener" class="pill-btn pill-btn-coffee">View the prototype</a>
         </div>
       </div>
     </div>
@@ -248,25 +469,25 @@ html, body { height: 100%; margin: 0; }
       </button>
       <h1 style="margin-bottom:var(--space-6)">Contact me!</h1>
       <div style="display:flex;flex-wrap:wrap;justify-content:center;gap:var(--space-6)">
-        <a href="https://www.instagram.com/p0g_i/" target="_blank" rel="noopener" class="contact-link" style="animation:drift1 7s ease-in-out infinite">
-          <img src="assets/flower-red.png" alt="Instagram" style="width:100%" />
-          <div class="label" style="Margin-top:-6px;font-size:14px;letter-spacing:0.08em;text-transform:uppercase;color:#39351e">Instagram</div>
-        </a>
-        <a href="https://www.facebook.com/boglarka.dobos.54" target="_blank" rel="noopener" class="contact-link" style="animation:drift2 8.5s ease-in-out infinite">
+        <a href="https://facebook.com" target="_blank" rel="noopener" class="contact-link" style="animation:drift2 8.5s ease-in-out infinite">
           <img src="assets/flower-yellow.png" alt="Facebook" style="width:100%" />
           <div class="label" style="margin-top:-6px;font-size:14px;letter-spacing:0.08em;text-transform:uppercase;color:#39351e">Facebook</div>
         </a>
-        <a href="https://www.linkedin.com/in/boglarka-dobos-60a320385/" target="_blank" rel="noopener" class="contact-link" style="animation:drift3 9.5s ease-in-out infinite">
+        <a href="https://linkedin.com" target="_blank" rel="noopener" class="contact-link" style="animation:drift3 9.5s ease-in-out infinite">
           <img src="assets/flower-blue.png" alt="LinkedIn" style="width:100%" />
           <div class="label" style="margin-top:-6px;font-size:14px;letter-spacing:0.08em;text-transform:uppercase;color:#39351e">LinkedIn</div>
         </a>
+        <a href="https://instagram.com" target="_blank" rel="noopener" class="contact-link" style="animation:drift1 7s ease-in-out infinite">
+          <img src="assets/flower-red.png" alt="Instagram" style="width:100%" />
+          <div class="label" style="margin-top:-6px;font-size:14px;letter-spacing:0.08em;text-transform:uppercase;color:#39351e">Instagram</div>
+        </a>
         <a href="#" class="contact-link" style="animation:drift2 7.5s ease-in-out infinite">
-          <img src="assets/flower-red.png" alt="Something else" style="width:100%" />
-          <div class="label" style="margin-top:-6px;font-size:14px;letter-spacing:0.08em;text-transform:uppercase;color:#39351e">Something Else</div>
+          <img src="assets/flower-yellow.png" alt="Glassdoor" style="width:100%" />
+          <div class="label" style="margin-top:-6px;font-size:14px;letter-spacing:0.08em;text-transform:uppercase;color:#39351e">Glassdoor</div>
         </a>
         <a href="#" class="contact-link" style="animation:drift1 8.5s ease-in-out infinite">
-          <img src="assets/flower-yellow.png" alt="Something else" style="width:100%" />
-          <div class="label" style="margin-top:-6px;font-size:14px;letter-spacing:0.08em;text-transform:uppercase;color:#39351e">Something Else</div>
+          <img src="assets/flower-blue.png" alt="GitHub" style="width:100%" />
+          <div class="label" style="margin-top:-6px;font-size:14px;letter-spacing:0.08em;text-transform:uppercase;color:#39351e">GitHub</div>
         </a>
       </div>
     </div>
@@ -275,36 +496,45 @@ html, body { height: 100%; margin: 0; }
   <!-- ABOUT / WHO AM I -->
   <section class="page" data-page="about">
     <div style="background:#e6e5e1">
-      <div style="padding:var(--space-8)">
-        <button class="back-btn" aria-label="Back" data-go="home" style="margin-bottom:var(--space-6)">
+      <div style="position:relative;overflow:hidden;padding:var(--space-8) var(--space-8) var(--space-6);box-sizing:border-box">
+        <button class="back-btn" aria-label="Back" data-go="home" style="position:relative;z-index:3">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#39351e" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
         </button>
-        <h6 style="color:#39351e;text-align:center">Who Am I</h6>
-        <h1 style="text-align:center;margin-bottom:var(--space-8)">A few sides of me</h1>
+
+        <img src="assets/flower-yellow.png" alt="" style="position:absolute;width:110px;left:6%;top:38%;pointer-events:none;animation:drift1 8s ease-in-out infinite">
+        <img src="assets/flower-red.png" alt="" style="position:absolute;width:84px;left:24%;top:14%;pointer-events:none;animation:drift2 9.5s ease-in-out infinite">
+        <img src="assets/barista-me-animated.png" alt="Bogi pouring coffee" style="position:absolute;top:8px;right:6%;width:min(521px,42vw);max-width:none;height:auto;display:block" />
+
+        <div style="position:relative;text-align:center;margin-top:200px">
+          <h1 style="margin:0;color:#39351e">WHO AM I</h1>
+          <p style="font-size:17px;line-height:1.5;margin:var(--space-3) auto 0;max-width:46ch;color:#39351e;opacity:0.85">Barista by day, designer always.</p>
+        </div>
       </div>
 
-      <div style="padding:0 var(--space-8) var(--space-8);display:grid;grid-template-columns:1fr 1.3fr;gap:var(--space-8);align-items:center">
+      <div class="grid-2" style="padding:0 var(--space-8) var(--space-8);display:grid;grid-template-columns:1fr 1.3fr;gap:var(--space-8);align-items:center">
         <div style="aspect-ratio:1/1;display:flex;align-items:center;justify-content:center">
-          <img src="assets/general-photo.jpg" alt="Portrait" style="width:100%;height:100%;object-fit:cover;clip-path:url(#flowerClip)" />
+          <img src="assets/general-photo.jpg" alt="Portrait" style="width:100%;height:100%;object-fit:cover;clip-path:url(#flowerClip)">
         </div>
         <div>
-          <h6 style="color:#39351e">General</h6>
-          <h2 style="margin-bottom:var(--space-4)">21, from Hungary, barista by trade.</h2>
+          <h2 style="margin-bottom:var(--space-4)">Hi, my name is BOGI, and I...</h2>
           <ul style="list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:12px;max-width:50ch">
-            <li style="display:flex;align-items:center;gap:10px;font-size:17px;opacity:0.85"><img src="assets/flower-red.png" alt="" style="width:20px;height:20px;object-fit:contain;flex-shrink:0" />I'm 21, from Hungary</li>
-            <li style="display:flex;align-items:center;gap:10px;font-size:17px;opacity:0.85"><img src="assets/flower-blue.png" alt="" style="width:20px;height:20px;object-fit:contain;flex-shrink:0" />I'm a barista — I love making coffee</li>
-            <li style="display:flex;align-items:center;gap:10px;font-size:17px;opacity:0.85"><img src="assets/flower-yellow.png" alt="" style="width:20px;height:20px;object-fit:contain;flex-shrink:0" />I love art, and I love working with colors</li>
-            <li style="display:flex;align-items:center;gap:10px;font-size:17px;opacity:0.85"><img src="assets/flower-red.png" alt="" style="width:20px;height:20px;object-fit:contain;flex-shrink:0" />I love rock music</li>
-            <li style="display:flex;align-items:center;gap:10px;font-size:17px;opacity:0.85"><img src="assets/flower-blue.png" alt="" style="width:20px;height:20px;object-fit:contain;flex-shrink:0" />My favorite architect is Le Corbusier — I'm drawn to modernism</li>
-            <li style="display:flex;align-items:center;gap:10px;font-size:17px;opacity:0.85"><img src="assets/flower-yellow.png" alt="" style="width:20px;height:20px;object-fit:contain;flex-shrink:0" />I speak English, Hungarian and Danish</li>
+            <li style="display:flex;align-items:center;gap:10px;font-size:17px;opacity:0.85"><img src="assets/flower-red.png" alt="" style="width:20px;height:20px;object-fit:contain;flex-shrink:0">I'm 21, from Hungary</li>
+            <li style="display:flex;align-items:center;gap:10px;font-size:17px;opacity:0.85"><img src="assets/flower-blue.png" alt="" style="width:20px;height:20px;object-fit:contain;flex-shrink:0">I'm a barista</li>
+            <li style="display:flex;align-items:center;gap:10px;font-size:17px;opacity:0.85"><img src="assets/flower-yellow.png" alt="" style="width:20px;height:20px;object-fit:contain;flex-shrink:0">I love art</li>
+            <li style="display:flex;align-items:center;gap:10px;font-size:17px;opacity:0.85"><img src="assets/flower-blue.png" alt="" style="width:20px;height:20px;object-fit:contain;flex-shrink:0">I love working with colors</li>
+            <li style="display:flex;align-items:center;gap:10px;font-size:17px;opacity:0.85"><img src="assets/flower-red.png" alt="" style="width:20px;height:20px;object-fit:contain;flex-shrink:0">I enjoy rock music</li>
+            <li style="display:flex;align-items:center;gap:10px;font-size:17px;opacity:0.85"><img src="assets/flower-blue.png" alt="" style="width:20px;height:20px;object-fit:contain;flex-shrink:0">I have a deep connection with architecture, especially modernism</li>
+            <li style="display:flex;align-items:center;gap:10px;font-size:17px;opacity:0.85"><img src="assets/flower-yellow.png" alt="" style="width:20px;height:20px;object-fit:contain;flex-shrink:0">I speak English, Hungarian and Danish</li>
+            <li style="display:flex;align-items:center;gap:10px;font-size:17px;opacity:0.85"><img src="assets/flower-red.png" alt="" style="width:20px;height:20px;object-fit:contain;flex-shrink:0">I study multimedia design</li>
           </ul>
-          <p style="font-size:17px;max-width:50ch;opacity:0.85;margin-top:var(--space-4)">Why multimedia design? It's the connection between people and design — all the opportunities it opens up to put what I make into action.</p>
           <div style="display:flex;flex-wrap:wrap;gap:8px;margin-top:var(--space-4)">
             <span style="display:inline-block;padding:6px 14px;border:1px solid #39351e;border-radius:999px;font-size:13px;letter-spacing:0.02em;color:#39351e">bold</span>
             <span style="display:inline-block;padding:6px 14px;border:1px solid #39351e;border-radius:999px;font-size:13px;letter-spacing:0.02em;color:#39351e">happy</span>
             <span style="display:inline-block;padding:6px 14px;border:1px solid #39351e;border-radius:999px;font-size:13px;letter-spacing:0.02em;color:#39351e">art</span>
-            <span style="display:inline-block;padding:6px 14px;border:1px solid #39351e;border-radius:999px;font-size:13px;letter-spacing:0.02em;color:#39351e">music</span>
-            <span style="display:inline-block;padding:6px 14px;border:1px solid #39351e;border-radius:999px;font-size:13px;letter-spacing:0.02em;color:#39351e">festival</span>
+            <span style="display:inline-block;padding:6px 14px;border:1px solid #39351e;border-radius:999px;font-size:13px;letter-spacing:0.02em;color:#39351e">colors</span>
+            <span style="display:inline-block;padding:6px 14px;border:1px solid #39351e;border-radius:999px;font-size:13px;letter-spacing:0.02em;color:#39351e">rock music</span>
+            <span style="display:inline-block;padding:6px 14px;border:1px solid #39351e;border-radius:999px;font-size:13px;letter-spacing:0.02em;color:#39351e">architecture</span>
+            <span style="display:inline-block;padding:6px 14px;border:1px solid #39351e;border-radius:999px;font-size:13px;letter-spacing:0.02em;color:#39351e">modernism</span>
             <span style="display:inline-block;padding:6px 14px;border:1px solid #39351e;border-radius:999px;font-size:13px;letter-spacing:0.02em;color:#39351e">coffee</span>
             <span style="display:inline-block;padding:6px 14px;border:1px solid #39351e;border-radius:999px;font-size:13px;letter-spacing:0.02em;color:#39351e">community</span>
           </div>
@@ -313,73 +543,266 @@ html, body { height: 100%; margin: 0; }
 
       <div style="height:1px;background:#39351e;opacity:0.15;margin:0 var(--space-8)"></div>
 
-      <div style="padding:var(--space-8);display:grid;grid-template-columns:1.3fr 1fr;gap:var(--space-8);align-items:center">
+      <div style="padding:var(--space-8);text-align:center">
+        <h6 style="color:#d6483e;margin:0 0 var(--space-3)">Why multimedia design?</h6>
+        <p style="font-size:30px;line-height:1.25;max-width:34ch;margin:0 auto;color:#39351e;text-wrap:pretty">It's the connection between people and design</p>
+      </div>
+
+      <div style="height:1px;background:#39351e;opacity:0.15;margin:0 var(--space-8)"></div>
+
+      <div style="padding:var(--space-8);text-align:center">
+        <h6 style="color:#4b8f7d;margin:0 0 var(--space-2)">Toolbox</h6>
+        <h2 style="margin-bottom:var(--space-6)">What I design and build with</h2>
+        <div style="display:flex;flex-wrap:wrap;justify-content:center;gap:16px;padding-bottom:34px">
+          <div class="tool"><div class="tool-box"><img src="assets/tool-figma.jpg" alt="Figma" style="transform:scale(1.18)"></div><span class="tool-label">Figma</span></div>
+          <div class="tool"><div class="tool-box"><img src="assets/tool-miro.jpg" alt="Miro" style="transform:scale(1.34)"></div><span class="tool-label">Miro</span></div>
+          <div class="tool"><div class="tool-box"><img src="assets/tool-illustrator.jpg" alt="Adobe Illustrator" style="transform:scale(1.22)"></div><span class="tool-label">Illustrator</span></div>
+          <div class="tool"><div class="tool-box"><img src="assets/tool-procreate.jpg" alt="Procreate" style="transform:scale(1.5)"></div><span class="tool-label">Procreate</span></div>
+          <div class="tool"><div class="tool-box"><img src="assets/tool-canva.jpg" alt="Canva" style="transform:scale(1.85)"></div><span class="tool-label">Canva</span></div>
+          <div class="tool"><div class="tool-box"><img src="assets/tool-vscode.jpg" alt="Visual Studio Code" style="transform:scale(0.82)"></div><span class="tool-label">VS Code</span></div>
+          <div class="tool"><div class="tool-box"><img src="assets/tool-github.jpg" alt="GitHub" style="transform:scale(1.12)"></div><span class="tool-label">GitHub</span></div>
+          <div class="tool"><div class="tool-box"><img src="assets/tool-claude.jpg" alt="Claude" style="transform:scale(1.02)"></div><span class="tool-label">Claude</span></div>
+        </div>
+      </div>
+
+      <div style="height:1px;background:#39351e;opacity:0.15;margin:0 var(--space-8)"></div>
+
+      <div class="grid-2" style="padding:var(--space-8);display:grid;grid-template-columns:1.3fr 1fr;gap:var(--space-8);align-items:center">
         <div>
-          <h6 style="color:#4b8f7d">Team Player</h6>
-          <h2 style="margin-bottom:var(--space-3)">Better work happens together.</h2>
-          <p style="font-size:17px;max-width:50ch;opacity:0.85">I'm a good listener and an empathetic, creative team builder. My strengths are personal connection, speaking, design, colors and creativity. Classmates describe me as an out-of-the-box thinker, a problem solver, a colorful personality, a happy person and creative.</p>
+          <h2 style="margin-bottom:var(--space-3)">What my classmates say about me:</h2>
           <div style="display:flex;flex-wrap:wrap;gap:8px;margin-top:var(--space-4)">
             <span style="display:inline-block;padding:6px 14px;border:1px solid #4b8f7d;border-radius:999px;font-size:13px;letter-spacing:0.02em;color:#4b8f7d">good listener</span>
-            <span style="display:inline-block;padding:6px 14px;border:1px solid #4b8f7d;border-radius:999px;font-size:13px;letter-spacing:0.02em;color:#4b8f7d">empathetic</span>
-            <span style="display:inline-block;padding:6px 14px;border:1px solid #4b8f7d;border-radius:999px;font-size:13px;letter-spacing:0.02em;color:#4b8f7d">creative</span>
+            <span style="display:inline-block;padding:6px 14px;border:1px solid #4b8f7d;border-radius:999px;font-size:13px;letter-spacing:0.02em;color:#4b8f7d">out of the box thinker</span>
+            <span style="display:inline-block;padding:6px 14px;border:1px solid #4b8f7d;border-radius:999px;font-size:13px;letter-spacing:0.02em;color:#4b8f7d">good at connecting</span>
+            <span style="display:inline-block;padding:6px 14px;border:1px solid #4b8f7d;border-radius:999px;font-size:13px;letter-spacing:0.02em;color:#4b8f7d">empathethic</span>
             <span style="display:inline-block;padding:6px 14px;border:1px solid #4b8f7d;border-radius:999px;font-size:13px;letter-spacing:0.02em;color:#4b8f7d">team builder</span>
+            <span style="display:inline-block;padding:6px 14px;border:1px solid #4b8f7d;border-radius:999px;font-size:13px;letter-spacing:0.02em;color:#4b8f7d">creative</span>
+            <span style="display:inline-block;padding:6px 14px;border:1px solid #4b8f7d;border-radius:999px;font-size:13px;letter-spacing:0.02em;color:#4b8f7d">good speaker</span>
+            <span style="display:inline-block;padding:6px 14px;border:1px solid #4b8f7d;border-radius:999px;font-size:13px;letter-spacing:0.02em;color:#4b8f7d">happy person</span>
+            <span style="display:inline-block;padding:6px 14px;border:1px solid #4b8f7d;border-radius:999px;font-size:13px;letter-spacing:0.02em;color:#4b8f7d">designer</span>
+            <span style="display:inline-block;padding:6px 14px;border:1px solid #4b8f7d;border-radius:999px;font-size:13px;letter-spacing:0.02em;color:#4b8f7d">colourful</span>
           </div>
         </div>
         <div style="aspect-ratio:1/1;display:flex;align-items:center;justify-content:center">
-          <img src="assets/team-photo.png" alt="With friends" style="width:100%;height:100%;object-fit:cover;clip-path:url(#flowerClip)" />
+          <img src="assets/team-photo.jpg" alt="With friends" style="width:100%;height:100%;object-fit:cover;clip-path:url(#flowerClip)">
         </div>
       </div>
 
       <div style="height:1px;background:#39351e;opacity:0.15;margin:0 var(--space-8)"></div>
 
       <div style="padding:var(--space-8);display:flex;flex-direction:column;align-items:center;text-align:center;gap:var(--space-3)">
-        <h6 style="color:#39351e">Personality</h6>
         <div style="display:flex;align-items:center;gap:var(--space-3)">
-          <img src="assets/flower-yellow.png" alt="" style="width:40px;height:40px;object-fit:contain" />
+          <img src="assets/flower-yellow.png" alt="" style="width:40px;height:40px;object-fit:contain">
           <h2 style="margin:0">I'm an ENFP-T — "The Campaigner"</h2>
-          <img src="assets/flower-yellow.png" alt="" style="width:40px;height:40px;object-fit:contain" />
+          <img src="assets/flower-yellow.png" alt="" style="width:40px;height:40px;object-fit:contain">
         </div>
-        <p style="font-size:17px;max-width:60ch;opacity:0.85">Extraverted, Intuitive, Feeling, Prospecting — Turbulent. It means I'm curious and people-driven, I connect ideas and people easily, and I lead with empathy and imagination over strict planning. Campaigners are warm, enthusiastic, and genuinely care about others — which tracks with being a team player who likes bold, colorful, community-minded work.</p>
+        <p style="font-size:17px;max-width:60ch;opacity:0.85">Extraverted, Intuitive, Feeling, Prospecting — Turbulent.<br>It means I'm curious and people-driven, I connect ideas and people easily, and I lead with empathy and imagination over strict planning. I'm a team player who likes bold, colorful, community-minded work.</p>
       </div>
 
       <div style="height:1px;background:#39351e;opacity:0.15;margin:0 var(--space-8)"></div>
 
-      <div style="padding:var(--space-8);display:grid;grid-template-columns:1fr 1.3fr;gap:var(--space-8);align-items:center">
+      <div class="grid-2" style="padding:var(--space-8);display:grid;grid-template-columns:1fr 1.3fr;gap:var(--space-8);align-items:center">
         <div style="aspect-ratio:1/1;display:flex;align-items:center;justify-content:center">
-          <img src="assets/family-cropped.jpeg" alt="Family photo" style="width:100%;height:100%;object-fit:cover;clip-path:url(#flowerClip)" />
+          <img src="assets/family-photo-cropped.jpg" alt="Family" style="width:100%;height:100%;object-fit:cover;clip-path:url(#flowerClip)">
         </div>
         <div>
-          <h6 style="color:#39351e">Family</h6>
-          <h2 style="margin-bottom:var(--space-3)">Home keeps me grounded.</h2>
-          <p style="font-size:17px;max-width:50ch;opacity:0.85">I get all my skills, ideas and motivation from my family. Growing up with architect parents, I was introduced to art, design and architecture at a very young age. I was raised to take in arts and to express myself through them. For me, life is about impression — not about fitting in.</p>
+          <h2 style="margin-bottom:var(--space-3)">Family keeps me grounded.</h2>
+          <p style="font-size:17px;max-width:50ch;opacity:0.85">I get all my skills, ideas and motivation from my family. Growing up with architect parents, I was introduced to art, design and architecture at a very young age. I was raised to take in arts and to express myself through them. <br>For me, life is about impression, not about fitting in.</p>
         </div>
       </div>
 
       <div style="height:1px;background:#39351e;opacity:0.15;margin:0 var(--space-8)"></div>
 
-      <div style="padding:var(--space-8);display:grid;grid-template-columns:1.3fr 1fr;gap:var(--space-8);align-items:center">
+      <div class="grid-2" style="padding:var(--space-8);display:grid;grid-template-columns:1.3fr 1fr;gap:var(--space-8);align-items:center">
         <div>
-          <h6 style="color:#4b8f7d">Dreams</h6>
           <h2 style="margin-bottom:var(--space-3)">In five years...</h2>
-          <p style="font-size:17px;max-width:50ch;opacity:0.85">In five years I see myself still working with people, still working with design — and hopefully doing something with architecture too. My most important skills are working with colors, drawing, working with people and getting ideas. I'm passionate about colors, design, gamification, architecture, interactive design and interactivity.</p>
-          <div style="display:flex;flex-wrap:wrap;gap:8px;margin-top:var(--space-4)">
-            <span style="display:inline-block;padding:6px 14px;border:1px solid #4b8f7d;border-radius:999px;font-size:13px;letter-spacing:0.02em;color:#4b8f7d">colors</span>
-            <span style="display:inline-block;padding:6px 14px;border:1px solid #4b8f7d;border-radius:999px;font-size:13px;letter-spacing:0.02em;color:#4b8f7d">design</span>
-            <span style="display:inline-block;padding:6px 14px;border:1px solid #4b8f7d;border-radius:999px;font-size:13px;letter-spacing:0.02em;color:#4b8f7d">gamification</span>
-            <span style="display:inline-block;padding:6px 14px;border:1px solid #4b8f7d;border-radius:999px;font-size:13px;letter-spacing:0.02em;color:#4b8f7d">architecture</span>
-            <span style="display:inline-block;padding:6px 14px;border:1px solid #4b8f7d;border-radius:999px;font-size:13px;letter-spacing:0.02em;color:#4b8f7d">interactive design</span>
-            <span style="display:inline-block;padding:6px 14px;border:1px solid #4b8f7d;border-radius:999px;font-size:13px;letter-spacing:0.02em;color:#4b8f7d">interactivity</span>
-          </div>
-          <button data-go="contact" style="margin-top:var(--space-4);display:inline-block;padding:12px 28px;border:none;border-radius:999px;background:#e8571b;color:#fff;font-size:16px;letter-spacing:0.02em;cursor:pointer">Get in touch →</button>
+          <p style="font-size:17px;max-width:50ch;opacity:0.85">In five years I see myself still working with design, hopefully amongst people I like very much.<br>I imagine myself as somewhat of an important member of a team, working during the day, hanging with family and friends when I'm not at work. Hopefully, I will get a dog.<br>I also hope my work will allow me from time-to-tome to work in nature, remotely, next to a lake, drinking a cup of coffee.</p>
+          <button data-go="contact" style="margin-top:var(--space-4);display:inline-block;padding:12px 28px;border:none;border-radius:999px;color:#fff;font-size:16px;letter-spacing:0.02em;cursor:pointer;background-color:#DA6258">Get in touch →</button>
         </div>
         <div style="aspect-ratio:1/1;display:flex;align-items:center;justify-content:center">
-          <img src="assets/dreams-photo.jpg" alt="Portrait" style="width:100%;height:100%;object-fit:cover;clip-path:url(#flowerClip)" />
+          <img src="assets/dreams-photo.jpg" alt="Portrait" style="width:100%;height:100%;object-fit:cover;clip-path:url(#flowerClip)">
         </div>
       </div>
     </div>
   </section>
 
-  <img src="assets/logo-mark.png" alt="Studio mark, back to home" title="Home" data-go="home" style="position:fixed;bottom:18px;right:18px;width:64px;height:64px;object-fit:contain;cursor:pointer;z-index:20;filter:url(#logoRecolor)" />
+  <!-- CPHFW -->
+  <section class="page" data-page="cphfw">
+    <div style="background:#e6e5e1;position:relative">
+      <button class="back-btn" aria-label="Back" data-go="home" style="position:fixed;top:24px;left:24px;z-index:20">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#39351e" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
+      </button>
+
+      <img src="assets/flower-red.png" alt="" style="position:absolute;width:150px;right:6%;top:40px;pointer-events:none;animation:drift2 9s ease-in-out infinite">
+
+      <div style="max-width:1080px;margin:0 auto;padding:96px var(--space-8) var(--space-8);text-align:center;position:relative">
+        <h6 style="color:#d6483e;margin:0 0 var(--space-3)">Copenhagen Fashion Week · Prototyping, Multimedia Design</h6>
+        <h1 style="margin:0;font-size:120px;line-height:0.9;letter-spacing:-0.01em;color:#39351e">CPHFW</h1>
+      </div>
+
+      <div style="max-width:1080px;margin:0 auto;padding:0 var(--space-8) var(--space-6)">
+        <div style="border-top:1px solid rgba(57,53,30,0.25);padding-top:var(--space-6);display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:var(--space-6);text-align:left">
+          <div><h6 style="color:#4b8f7d;margin:0 0 8px">Client</h6><p style="font-size:16px;line-height:1.45;margin:0;opacity:0.85">Copenhagen Fashion Week</p></div>
+          <div><h6 style="color:#4b8f7d;margin:0 0 8px">Role</h6><p style="font-size:16px;line-height:1.45;margin:0;opacity:0.85">UX Research, UI/UX Design, Prototyping</p></div>
+          <div><h6 style="color:#4b8f7d;margin:0 0 8px">Duration</h6><p style="font-size:16px;line-height:1.45;margin:0;opacity:0.85">8 weeks</p></div>
+          <div><h6 style="color:#4b8f7d;margin:0 0 8px">Date</h6><p style="font-size:16px;line-height:1.45;margin:0;opacity:0.85">November 2025</p></div>
+          <div><h6 style="color:#4b8f7d;margin:0 0 8px">Tools</h6><p style="font-size:16px;line-height:1.45;margin:0;opacity:0.85">Figma, FigJam, VS Code</p></div>
+        </div>
+      </div>
+
+      <div style="max-width:1080px;margin:0 auto;padding:0 var(--space-8) var(--space-8)">
+        <div class="grid-2" style="border-top:1px solid rgba(57,53,30,0.25);padding-top:var(--space-6);display:grid;grid-template-columns:1fr 1fr;gap:var(--space-8);text-align:left">
+          <div>
+            <h3 style="margin:0 0 var(--space-3);color:#d6483e">The challenge</h3>
+            <p style="font-size:17px;line-height:1.5;opacity:0.85;margin:0">“Dark and avant-garde.” “Colourful and grandma-like.” “Y2k-girly and flower power.” Our interviewees dressed nothing alike — but they all cared about sustainability, and they all wanted to know where to go. Fashion Week information is scattered, and going alone is intimidating.</p>
+          </div>
+          <div>
+            <h3 style="margin:0 0 var(--space-3);color:#d6483e">The goal</h3>
+            <p style="font-size:17px;line-height:1.5;opacity:0.85;margin:0">Two connected platforms: an info screen at the venue for schedules, brands and sustainability facts, and a companion app on the phone for saving events, discounts and finding company. Our five values guided every decision — interactive, stylish, informative, clean, community.</p>
+          </div>
+        </div>
+      </div>
+
+      <div style="max-width:1160px;margin:0 auto;padding:0 var(--space-8) var(--space-8)">
+        <div style="display:flex;flex-wrap:wrap;gap:var(--space-4);justify-content:center;align-items:center;border-top:1px solid rgba(57,53,30,0.25);padding-top:var(--space-6)">
+          <a href="#cphfw-discover" class="phase-flower" style="animation:drift1 7s ease-in-out infinite"><img src="assets/flower-yellow.png" alt="" /><span>Discover</span></a>
+          <a href="#cphfw-define" class="phase-flower" style="animation:drift2 8.5s ease-in-out infinite"><img src="assets/flower-red.png" alt="" /><span>Define</span></a>
+          <a href="#cphfw-develop" class="phase-flower" style="animation:drift3 9.5s ease-in-out infinite"><img src="assets/flower-blue.png" alt="" /><span>Develop</span></a>
+          <a href="#cphfw-deliver" class="phase-flower" style="animation:drift2 7.5s ease-in-out infinite"><img src="assets/flower-yellow.png" alt="" /><span>Deliver</span></a>
+        </div>
+      </div>
+
+      <div style="max-width:1160px;margin:0 auto;padding:0 var(--space-8) var(--space-8);display:flex;flex-direction:column;gap:var(--space-6)">
+        <div id="cphfw-discover" style="text-align:center;scroll-margin-top:24px;background-color:#EED25D;padding:var(--space-6) var(--space-6) var(--space-8)">
+          <h6 style="color:#39351e;margin:0 0 var(--space-2)">Discover</h6>
+          <h3 style="margin:0 0 var(--space-3)">Field research and five interviews</h3>
+          <p style="font-size:17px;line-height:1.5;opacity:0.85;margin:0 auto;max-width:70ch">We observed Fashion Week attendees on three premises - interest and inspiration, values around sustainability, and web behaviour - then ran five interviews to back our assumptions. Sustainability in fashion mattered to everyone we spoke to, and social media is where they look first. From that we built a persona: someone with a passion for fashion who shows their personality through their wardrobe, and who wants both information and company.</p>
+          <div style="display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:var(--space-6);margin:var(--space-6) auto 0;max-width:900px">
+            <figure style="margin:0"><img src="assets/cphfw-fieldresearch.png" alt="Field research board with observation lists, desk research notes and interview transcripts" style="width:100%;display:block;background:#fff"><figcaption style="font-size:13px;letter-spacing:0.02em;margin-top:8px;color:#39351e;opacity:0.8">Field research and interviews (fig. 1)</figcaption></figure>
+            <figure style="margin:0"><img src="assets/cphfw-brands.png" alt="Table of Copenhagen brands with attributes and their connection to sustainability" style="width:100%;display:block;background:#fff"><figcaption style="font-size:13px;letter-spacing:0.02em;margin-top:8px;color:#39351e;opacity:0.8">Brand mapping: attributes and sustainability</figcaption></figure>
+          </div>
+          <div style="margin:var(--space-6) auto 0;max-width:900px">
+            <figure style="margin:0"><img src="assets/cphfw-persona.png" alt="Persona board for Pierre, 46, founder of Mode Fantaisie, with values, business objectives and user goals" style="width:100%;display:block;background:#fff"><figcaption style="font-size:13px;letter-spacing:0.02em;margin-top:8px;color:#39351e;opacity:0.8">Persona — Pierre, founder of Mode Fantaisie</figcaption></figure>
+          </div>
+          <div style="margin:var(--space-6) auto 0;max-width:900px">
+            <figure style="margin:0"><img src="assets/cphfw-moodboard.png" alt="Moodboard of Copenhagen Fashion Week imagery, typography and materials" style="width:100%;display:block;background:#fff"><figcaption style="font-size:13px;letter-spacing:0.02em;margin-top:8px;color:#39351e;opacity:0.8">Moodboard</figcaption></figure>
+          </div>
+        </div>
+
+        <div id="cphfw-define" style="text-align:center;scroll-margin-top:24px;background-color:#D6493F;padding:var(--space-6) var(--space-6) var(--space-8)">
+          <h6 style="color:#f4e3d3;margin:0 0 var(--space-2)">Define</h6>
+          <h3 style="margin:0 0 var(--space-3);color:#f4e3d3">From canvas to requirements</h3>
+          <p style="font-size:17px;line-height:1.5;margin:0 auto;max-width:70ch;color:#f4e3d3">A Value Proposition Canvas showed how much information the solution had to carry — schedules, sustainable clothing, new brands. We ideated with the How Might We method, grouped the results into an affinity diagram, and turned them into a list of requirements that doubled as our task flow. Twelve candidate values went up on the wall; five got the most sticker votes and stayed.</p>
+          <div style="display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:var(--space-6);margin:var(--space-6) auto 0;max-width:900px">
+            <figure style="margin:0"><img src="assets/cphfw-vpc.png" alt="Hand-filled Value Proposition Canvas for CPHFW and the persona Pierre" style="width:100%;display:block;background:#fff"><figcaption style="font-size:13px;letter-spacing:0.02em;margin-top:8px;color:#f4e3d3">Value Proposition Canvas</figcaption></figure>
+            <figure style="margin:0"><img src="assets/cphfw-hmw.png" alt="How Might We affinity diagram grouped into socials, brands, events and city" style="width:100%;display:block;background:#fff"><figcaption style="font-size:13px;letter-spacing:0.02em;margin-top:8px;color:#f4e3d3">HMW method, grouped into an affinity diagram</figcaption></figure>
+          </div>
+          <div style="margin:var(--space-6) auto 0;max-width:900px">
+            <figure style="margin:0"><img src="assets/cphfw-requirements.png" alt="Requirements flow from the screen saver through menu, events, gallery, brands and CPH city" style="width:100%;display:block;background:#fff"><figcaption style="font-size:13px;letter-spacing:0.02em;margin-top:8px;color:#f4e3d3">List of requirements, doubling as our task flow</figcaption></figure>
+          </div>
+          <div style="display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin-top:var(--space-6)">
+            <span style="display:inline-block;padding:6px 14px;border:1px solid #f4e3d3;border-radius:999px;font-size:13px;color:#f4e3d3">Interactive</span>
+            <span style="display:inline-block;padding:6px 14px;border:1px solid #f4e3d3;border-radius:999px;font-size:13px;color:#f4e3d3">Stylish</span>
+            <span style="display:inline-block;padding:6px 14px;border:1px solid #f4e3d3;border-radius:999px;font-size:13px;color:#f4e3d3">Informative</span>
+            <span style="display:inline-block;padding:6px 14px;border:1px solid #f4e3d3;border-radius:999px;font-size:13px;color:#f4e3d3">Clean</span>
+            <span style="display:inline-block;padding:6px 14px;border:1px solid #f4e3d3;border-radius:999px;font-size:13px;color:#f4e3d3">Community</span>
+          </div>
+        </div>
+
+        <div id="cphfw-develop" style="text-align:center;scroll-margin-top:24px;background-color:#4B8F7D;padding:var(--space-6) var(--space-6) var(--space-8)">
+          <h6 style="color:#e6e5e1;margin:0 0 var(--space-2)">Develop</h6>
+          <h3 style="margin:0 0 var(--space-3);color:#e6e5e1">Low fidelity, on paper first</h3>
+          <p style="font-size:17px;line-height:1.5;margin:0 auto;max-width:70ch;color:#e6e5e1">We split the work between info screen and companion app and mapped both out on paper in a brainstorm session. The info screen was meant to read like a fashion poster — a gallery first, lots of air between elements, bold typography. Testing the LOFI gave us confidence in the flow: the changes were small ones. More time on the QR code, a clearer signal that the screen is interactive, a scroll bar in the menu, and a proper back button.</p>
+          <div style="display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:var(--space-6);margin:var(--space-6) auto 0;max-width:900px">
+            <figure style="margin:0"><img src="assets/cphfw-lofi-info.png" alt="Low fidelity info screen wireframes: gallery strip, event lists, menu and selfie flow" style="width:100%;display:block;background:#fff"><figcaption style="font-size:13px;letter-spacing:0.02em;margin-top:8px;color:#e6e5e1">LOFI info screen</figcaption></figure>
+            <figure style="margin:0"><img src="assets/cphfw-lofi-app.png" alt="Low fidelity companion app wireframes with expandable day-by-day event programme" style="width:100%;display:block;background:#fff"><figcaption style="font-size:13px;letter-spacing:0.02em;margin-top:8px;color:#e6e5e1">LOFI companion app</figcaption></figure>
+          </div>
+        </div>
+      </div>
+
+      <div id="cphfw-deliver" style="text-align:center;max-width:1160px;margin:0 auto;padding:0 var(--space-8) var(--space-8);scroll-margin-top:24px">
+        <h6 style="color:#39351e;margin:0 0 var(--space-2)">Deliver</h6>
+        <h3 style="margin:0 0 var(--space-4)">The high fidelity prototype</h3>
+        <p style="font-size:17px;line-height:1.5;opacity:0.85;margin:0 auto var(--space-6);max-width:70ch">A style tile set the visual direction — typography, colour and mockups — with black and white leading and colour used sparingly in the app. The second round of usability tests ran from the info screen through to the app, and came back with a high success rate and only minor fixes: the navigation bar and the missing back buttons. The looping carousel in the companion app was coded with Swiper.</p>
+        <div style="max-width:1000px;margin:0 auto">
+          <figure style="margin:0"><img src="assets/cphfw-mockup.png" alt="The CPHFW info screen mocked up on a digital display in the street" style="width:100%;display:block;background:#fff"><figcaption style="font-size:13px;letter-spacing:0.02em;margin-top:8px;color:#39351e;opacity:0.8">The info screen in place</figcaption></figure>
+        </div>
+        <div style="display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:var(--space-6);max-width:1000px;margin:var(--space-6) auto 0">
+          <figure style="margin:0"><img src="assets/cphfw-hifi-info.png" alt="High fidelity info screen: CPHFW cover, Instagram gallery with QR code, brands list" style="width:100%;display:block;background:#fff"><figcaption style="font-size:13px;letter-spacing:0.02em;margin-top:8px;color:#39351e;opacity:0.8">HIFI info screen</figcaption></figure>
+          <figure style="margin:0"><img src="assets/cphfw-hifi-app.png" alt="High fidelity companion app: discover the city, gallery and fashion shows today" style="width:100%;display:block;background:#fff"><figcaption style="font-size:13px;letter-spacing:0.02em;margin-top:8px;color:#39351e;opacity:0.8">HIFI companion app</figcaption></figure>
+        </div>
+
+        <div style="display:flex;flex-wrap:wrap;gap:var(--space-4);justify-content:center;margin-top:var(--space-8)">
+          <a href="https://www.figma.com/proto/SG1uQa9POr3hz2lB50XD4Z/HIFI-CPHFW?node-id=1-28&amp;scaling=scale-down&amp;content-scaling=fixed&amp;starting-point-node-id=1%3A2&amp;page-id=0%3A1" target="_blank" rel="noopener" class="cphfw-btn cphfw-btn-fill">View Info Screen prototype →</a>
+          <a href="https://www.figma.com/proto/dqiGKoBfv8KPOZU3pp84JD/HIFI-APP?node-id=1-5&amp;scaling=scale-down&amp;content-scaling=fixed&amp;starting-point-node-id=1%3A2&amp;page-id=0%3A1" target="_blank" rel="noopener" class="cphfw-btn cphfw-btn-outline">View Companion App prototype →</a>
+        </div>
+
+        <div style="border-top:1px solid rgba(57,53,30,0.25);margin-top:var(--space-8);padding-top:var(--space-6);display:flex;flex-wrap:wrap;gap:var(--space-8);justify-content:center;text-align:left">
+          <div>
+            <h6 style="color:#4b8f7d;margin:0 0 6px">Team</h6>
+            <p style="font-size:16px;line-height:1.5;margin:0;opacity:0.85">Julia Michelle Maehren<br>Lorett Szabó<br>Boglárka Dobos<br>Florencia Murekian</p>
+          </div>
+          <div>
+            <h6 style="color:#4b8f7d;margin:0 0 6px">Course</h6>
+            <p style="font-size:16px;line-height:1.5;margin:0;opacity:0.85">Prototyping, Fall 2025<br>Multimedia Design<br>Supervisors Maria &amp; Sergio</p>
+          </div>
+          <div>
+            <h6 style="color:#4b8f7d;margin:0 0 6px">Deliverables</h6>
+            <p style="font-size:16px;line-height:1.5;margin:0;opacity:0.85">LOFI &amp; HIFI prototypes<br>Info screen 1200×1269<br>Companion app iPhone 14 Pro Max</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="site-footer">
+    <div class="footer-stripe">
+      <span style="flex:2;background:#eed25d"></span>
+      <span style="flex:1;background:#d6483e"></span>
+      <span style="flex:3;background:#e6e5e1"></span>
+      <span style="flex:1;background:#eed25d"></span>
+      <span style="flex:2;background:#d6483e"></span>
+    </div>
+    <img src="assets/flower-yellow.png" alt="" style="position:absolute;width:180px;right:-40px;top:60px;opacity:0.18;pointer-events:none;animation:drift2 11s ease-in-out infinite">
+
+    <div style="max-width:1080px;margin:0 auto;position:relative;display:grid;grid-template-columns:1.2fr 1fr 1fr;gap:var(--space-8);align-items:start" class="grid-2">
+      <div>
+        <img src="assets/logo-mark.png" alt="Bogi Dobos mark" style="width:72px;height:72px;object-fit:contain;display:block;margin-bottom:var(--space-4);filter:brightness(0) invert(1) sepia(0.12) saturate(0.6)">
+        <p style="font-size:26px;line-height:1.15;margin:0;color:#e6e5e1;letter-spacing:0.06em">BOGLARKA DOBOS</p>
+        <p style="font-size:14px;letter-spacing:0.1em;text-transform:uppercase;margin:6px 0 0;color:#eed25d">Multimedia designer</p>
+        <p style="font-size:17px;line-height:1.45;margin:var(--space-3) 0 0;max-width:26ch;color:#f4e3d3">Barista by day, <span style="color:#eed25d">designer always</span>.</p>
+        <p style="font-size:15px;line-height:1.5;margin:var(--space-4) 0 0;color:#e6e5e1;opacity:0.7">Aarhus, Denmark · Budaörs, Hungary</p>
+      </div>
+
+      <nav style="display:flex;flex-direction:column;gap:10px;position:relative">
+        <button id="workToggle" class="footer-toggle" aria-expanded="true">Work <span id="workCaret">−</span></button>
+        <div id="workList" class="footer-worklist">
+          <a href="#" class="footer-sub" data-go="2040">2040</a>
+          <a href="#" class="footer-sub" data-go="festival">Blå Sol</a>
+          <a href="#" class="footer-sub" data-go="coffee">Coffee &amp; Connect</a>
+          <a href="#" class="footer-sub" data-go="cphfw">CPHFW</a>
+        </div>
+        <a href="#" class="footer-toplink" data-go="arts" style="margin-top:6px">Arts</a>
+        <a href="#" class="footer-toplink" data-go="about">Who am I</a>
+        <a href="#" class="footer-toplink" data-go="contact">Get in touch →</a>
+        <img src="assets/flower-red.png" alt="" style="position:absolute;width:120px;opacity:0.16;pointer-events:none;animation:drift3 13s ease-in-out infinite;left:199px;top:85px">
+      </nav>
+
+      <div style="display:flex;flex-direction:column;gap:10px">
+        <a href="mailto:dobosbogi@icloud.com" class="footer-link">dobosbogi@icloud.com</a>
+        <a href="tel:+4528831054" class="footer-link">+45 28 83 10 54</a>
+        <a href="#" class="footer-link" data-go="contact">Instagram</a>
+        <a href="#" class="footer-link" data-go="contact">LinkedIn</a>
+        <a href="#" class="footer-link" data-go="contact">Facebook</a>
+      </div>
+    </div>
+
+    <div style="max-width:1080px;margin:var(--space-8) auto 0;border-top:1px solid rgba(230,229,225,0.25);padding:var(--space-4) 0;display:flex;justify-content:space-between;gap:var(--space-4);flex-wrap:wrap;font-size:14px;color:#e6e5e1;opacity:0.7">
+      <span>© 2026 Bogi Dobos · Multimedia designer</span>
+      <a href="#" class="footer-bottom-link" data-go="home">Back to the flowers ↑</a>
+    </div>
+  </footer>
 
 </div>
 
@@ -389,6 +812,7 @@ html, body { height: 100%; margin: 0; }
     document.querySelectorAll('.page').forEach(function (el) {
       el.classList.toggle('is-active', el.dataset.page === page);
     });
+    document.body.setAttribute('data-page', page);
     window.scrollTo(0, 0);
   }
 
@@ -399,13 +823,28 @@ html, body { height: 100%; margin: 0; }
     go(target.getAttribute('data-go'));
   });
 
+  var workToggle = document.getElementById('workToggle');
+  var workList = document.getElementById('workList');
+  var workCaret = document.getElementById('workCaret');
+  workToggle.addEventListener('click', function () {
+    var open = workList.hasAttribute('hidden');
+    if (open) { workList.removeAttribute('hidden'); } else { workList.setAttribute('hidden', ''); }
+    workToggle.setAttribute('aria-expanded', String(open));
+    workCaret.textContent = open ? '−' : '+';
+  });
+
   var viewport = document.getElementById('homeViewport');
   var canvas = document.getElementById('homeCanvas');
   function updateScale() {
-    var s = Math.min(viewport.clientWidth / 1440, viewport.clientHeight / 900, 1);
+    var w = viewport.clientWidth, h = viewport.clientHeight;
+    if (!w || !h) { requestAnimationFrame(updateScale); return; }
+    var s = Math.min(w / 1440, h / 900, 1);
     canvas.style.transform = 'scale(' + s + ')';
   }
   window.addEventListener('resize', updateScale);
+  if (typeof ResizeObserver !== 'undefined') {
+    new ResizeObserver(updateScale).observe(viewport);
+  }
   updateScale();
 })();
 </script>
