@@ -3,7 +3,11 @@
   "version": "1.0.0",
   "private": true,
   "scripts": {
-    "dev": "npx live-server --open=./index.html --port=8080",
-    "serve": "npx http-server -c-1 . -p 8080"
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "devDependencies": {
+    "vite": "^6.4.3"
   }
 }
