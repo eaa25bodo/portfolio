@@ -78,8 +78,51 @@ body:not([data-page="home"]) .site-footer { display: block; }
 .footer-bottom-link { color: #e6e5e1; text-decoration: none; }
 .footer-bottom-link:hover { color: #eed25d; }
 
+/* ── Responsive ──────────────────────────────────────────────── */
 @media (max-width: 900px) {
-  .grid-2 { grid-template-columns: 1fr !important; }
+  :root { --space-8: 22px; --space-6: 18px; }
+
+  /* stack any inline-styled multi-column grid, unless it opts out */
+  [style*="display:grid"][style*="grid-template-columns"]:not(.keep-grid) {
+    grid-template-columns: 1fr !important;
+  }
+  .figure-grid, .sketch-grid, .poster-grid { grid-template-columns: repeat(2, 1fr) !important; }
+  .cphfw-meta { grid-template-columns: repeat(2, minmax(0,1fr)) !important; row-gap: var(--space-4) !important; }
+
+  h1 { font-size: clamp(2.5rem, 13vw, 4.5rem) !important; line-height: 1 !important; }
+  .home-title, #homeCanvas h1 { font-size: 56px !important; }
+
+  .deco-flower { width: 70px !important; }
+  .deco-2040-accent, .footer-nav-flower { display: none !important; }
+
+  .phase-flower { width: 130px !important; height: 130px !important; }
+  .phase-flower span { font-size: 15px !important; }
+
+  .pill-btn { padding: 14px 28px !important; font-size: 17px !important; }
+  .cphfw-btn { padding: 12px 22px !important; font-size: 14px !important; }
+
+  .meta-row { flex-wrap: wrap; }
+  .about-title-block { margin-top: 90px !important; }
+  .waste-icon { display: none !important; }
+}
+
+@media (max-width: 560px) {
+  .figure-grid, .sketch-grid, .poster-grid, .cphfw-meta { grid-template-columns: 1fr !important; }
+  h1 { font-size: clamp(2.1rem, 15vw, 3.2rem) !important; }
+  /* decorative-only flowers can crowd or cross text at phone width; the
+     content itself never depends on them */
+  .deco-flower { display: none !important; }
+}
+
+/* Home: below this width, drop the scaled 1440×900 stage for a normal
+   flowing layout — a tiny shrunk composition reads worse on a phone
+   than flowers that wrap at a size people can actually tap. */
+@media (max-width: 700px) {
+  #homeViewport { height: auto; min-height: 100vh; overflow: visible; padding: 56px 20px 40px; box-sizing: border-box; }
+  #homeCanvas { width: 100% !important; height: auto !important; transform: none !important; overflow: visible; display: flex; flex-direction: column; align-items: center; gap: 36px; }
+  #homeTitleBlock { position: static !important; inset: auto; order: -1; }
+  #homeFlowerGrid { display: flex; flex-wrap: wrap; justify-content: center; gap: 28px 20px; }
+  .home-flower { position: static !important; width: 128px !important; transform: none !important; }
 }
 </style>
 </head>
@@ -108,6 +151,7 @@ body:not([data-page="home"]) .site-footer { display: block; }
     <div id="homeViewport" style="width:100%;height:100vh;display:flex;align-items:center;justify-content:center;overflow:hidden;background:#e6e5e1">
       <div id="homeCanvas" style="width:1440px;height:900px;flex:none;position:relative;background:#e6e5e1;overflow:hidden">
 
+        <div id="homeFlowerGrid">
         <div class="home-flower" style="right:11%;top:12%;width:210px;animation:drift1 7s ease-in-out infinite" data-go="2040">
           <img src="assets/flower-yellow.png" alt="2040 project" />
           <div class="label">2040</div>
@@ -136,10 +180,11 @@ body:not([data-page="home"]) .site-footer { display: block; }
           <img src="assets/flower-blue.png" alt="CPHFW project" />
           <div class="label">CPHFW</div>
         </div>
+        </div>
 
-        <div style="position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;pointer-events:none">
+        <div id="homeTitleBlock" style="position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;pointer-events:none">
           <img src="assets/logo-mark.png" alt="Bogi Dobos mark" style="width:104px;height:104px;object-fit:contain;display:block;margin-bottom:18px" />
-          <h1 style="font-size:56px;letter-spacing:0.02em;color:#39351e;margin:0">BOGLARKA DOBOS</h1>
+          <h1 class="home-title" style="font-size:56px;letter-spacing:0.02em;color:#39351e;margin:0">BOGLARKA DOBOS</h1>
           <div style="font-size:18px;letter-spacing:0.15em;text-transform:uppercase;color:#39351e;opacity:0.75;margin-top:8px">Multimedia designer</div>
         </div>
       </div>
@@ -153,11 +198,11 @@ body:not([data-page="home"]) .site-footer { display: block; }
         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#39351e" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
       </button>
 
-      <img src="assets/flower-red.png" alt="" style="position:absolute;width:150px;right:6%;top:40px;pointer-events:none;animation:drift3 9.5s ease-in-out infinite" />
+      <img class="deco-flower" src="assets/flower-red.png" alt="" style="position:absolute;width:150px;right:6%;top:40px;pointer-events:none;animation:drift3 9.5s ease-in-out infinite" />
 
       <div style="max-width:1080px;margin:0 auto;padding:96px var(--space-8) var(--space-8);position:relative">
         <h6 style="color:#d6483e;margin:0 0 var(--space-3)">Húsznegyven Egyesület · Budaörs, Hungary</h6>
-        <h1 style="margin:0;font-size:180px;line-height:0.82;letter-spacing:-0.01em;color:#4b8f7d;position:relative;display:inline-block">2040<img src="assets/flower-yellow.png" alt="" style="position:absolute;width:110px;left:366px;top:76px;pointer-events:none;animation:drift1 8s ease-in-out infinite" /></h1>
+        <h1 style="margin:0;font-size:180px;line-height:0.82;letter-spacing:-0.01em;color:#4b8f7d;position:relative;display:inline-block">2040<img class="deco-flower deco-2040-accent" src="assets/flower-yellow.png" alt="" style="position:absolute;width:110px;left:366px;top:76px;pointer-events:none;animation:drift1 8s ease-in-out infinite" /></h1>
         <p style="font-size:17px;line-height:1.55;max-width:60ch;margin:var(--space-6) 0 0;opacity:0.85">Húsznegyven Egyesület is a civil organisation working at the intersection of architecture, urban planning and local community building. For fifteen years they have been organising talks, exhibitions, concerts and workshops to get residents engaged with their built environment.</p>
       </div>
 
@@ -236,9 +281,9 @@ body:not([data-page="home"]) .site-footer { display: block; }
           <div style="position:relative;padding-bottom:80px">
             <h3 style="margin:0 0 var(--space-3);color:#d6483e">The goal</h3>
             <p style="font-size:17px;line-height:1.5;opacity:0.85;margin:0">How can Blå Sol Festival motivate participants aged 18–25 to responsibly collect and dispose of waste through a gamified digital solution?</p>
-            <img src="assets/blasol-waste-3.png" alt="Tied-off bag of festival waste" style="width:56px;height:auto;display:block;position:absolute;right:120px;bottom:10px" />
-            <img src="assets/blasol-waste-1.png" alt="Crushed plastic bottle" style="width:70px;height:auto;display:block;position:absolute;right:60px;bottom:0" />
-            <img src="assets/blasol-waste-2.png" alt="Discarded plastic bag" style="width:90px;height:auto;display:block;position:absolute;right:-10px;bottom:16px" />
+            <img class="waste-icon" src="assets/blasol-waste-3.png" alt="Tied-off bag of festival waste" style="width:56px;height:auto;display:block;position:absolute;right:120px;bottom:10px" />
+            <img class="waste-icon" src="assets/blasol-waste-1.png" alt="Crushed plastic bottle" style="width:70px;height:auto;display:block;position:absolute;right:60px;bottom:0" />
+            <img class="waste-icon" src="assets/blasol-waste-2.png" alt="Discarded plastic bag" style="width:90px;height:auto;display:block;position:absolute;right:-10px;bottom:16px" />
           </div>
         </div>
       </div>
@@ -311,18 +356,18 @@ body:not([data-page="home"]) .site-footer { display: block; }
   <!-- ARTS -->
   <section class="page" data-page="arts">
     <div style="position:relative;background:#e6e5e1">
-      <img src="assets/flower-red.png" alt="" style="position:absolute;width:180px;left:4%;top:2%;pointer-events:none">
-      <img src="assets/flower-yellow.png" alt="" style="position:absolute;width:200px;right:5%;top:20%;pointer-events:none">
-      <img src="assets/flower-blue.png" alt="" style="position:absolute;width:190px;left:8%;bottom:6%;pointer-events:none">
-      <img src="assets/flower-red.png" alt="" style="position:absolute;width:160px;right:10%;bottom:2%;pointer-events:none">
-      <img src="assets/flower-yellow.png" alt="" style="position:absolute;width:150px;left:22%;top:12%;pointer-events:none">
-      <img src="assets/flower-blue.png" alt="" style="position:absolute;width:170px;right:28%;top:4%;pointer-events:none">
-      <img src="assets/flower-red.png" alt="" style="position:absolute;width:150px;left:15%;top:38%;pointer-events:none">
-      <img src="assets/flower-yellow.png" alt="" style="position:absolute;width:180px;right:6%;bottom:30%;pointer-events:none">
-      <img src="assets/flower-blue.png" alt="" style="position:absolute;width:160px;left:42%;bottom:10%;pointer-events:none">
-      <img src="assets/flower-red.png" alt="" style="position:absolute;width:150px;left:30%;top:58%;pointer-events:none">
-      <img src="assets/flower-yellow.png" alt="" style="position:absolute;width:170px;right:20%;top:62%;pointer-events:none">
-      <img src="assets/flower-blue.png" alt="" style="position:absolute;width:150px;left:60%;top:68%;pointer-events:none">
+      <img class="deco-flower" src="assets/flower-red.png" alt="" style="position:absolute;width:180px;left:4%;top:2%;pointer-events:none">
+      <img class="deco-flower" src="assets/flower-yellow.png" alt="" style="position:absolute;width:200px;right:5%;top:20%;pointer-events:none">
+      <img class="deco-flower" src="assets/flower-blue.png" alt="" style="position:absolute;width:190px;left:8%;bottom:6%;pointer-events:none">
+      <img class="deco-flower" src="assets/flower-red.png" alt="" style="position:absolute;width:160px;right:10%;bottom:2%;pointer-events:none">
+      <img class="deco-flower" src="assets/flower-yellow.png" alt="" style="position:absolute;width:150px;left:22%;top:12%;pointer-events:none">
+      <img class="deco-flower" src="assets/flower-blue.png" alt="" style="position:absolute;width:170px;right:28%;top:4%;pointer-events:none">
+      <img class="deco-flower" src="assets/flower-red.png" alt="" style="position:absolute;width:150px;left:15%;top:38%;pointer-events:none">
+      <img class="deco-flower" src="assets/flower-yellow.png" alt="" style="position:absolute;width:180px;right:6%;bottom:30%;pointer-events:none">
+      <img class="deco-flower" src="assets/flower-blue.png" alt="" style="position:absolute;width:160px;left:42%;bottom:10%;pointer-events:none">
+      <img class="deco-flower" src="assets/flower-red.png" alt="" style="position:absolute;width:150px;left:30%;top:58%;pointer-events:none">
+      <img class="deco-flower" src="assets/flower-yellow.png" alt="" style="position:absolute;width:170px;right:20%;top:62%;pointer-events:none">
+      <img class="deco-flower" src="assets/flower-blue.png" alt="" style="position:absolute;width:150px;left:60%;top:68%;pointer-events:none">
       <div style="padding:var(--space-8);position:relative">
         <button class="back-btn" aria-label="Back" data-go="home" style="margin-bottom:var(--space-4)">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#39351e" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
@@ -331,7 +376,7 @@ body:not([data-page="home"]) .site-footer { display: block; }
 
         <h2 style="margin-bottom:var(--space-2)">Figure drawings</h2>
         <p style="font-size:17px;max-width:60ch;opacity:0.85;margin-bottom:var(--space-6)">Charcoal life-drawing studies from figure sessions, working from observation on pose, weight and light.</p>
-        <div style="display:grid;grid-template-columns:repeat(5,1fr);gap:var(--space-4)">
+        <div class="figure-grid" style="display:grid;grid-template-columns:repeat(5,1fr);gap:var(--space-4)">
           <div style="background:var(--color-surface);aspect-ratio:3/4;overflow:hidden"><img src="assets/figure-1.png" alt="Charcoal figure drawing, seated male model" style="width:100%;height:100%;object-fit:cover"></div>
           <div style="background:var(--color-surface);aspect-ratio:3/4;overflow:hidden"><img src="assets/figure-2.png" alt="Charcoal figure drawing, seated female model" style="width:100%;height:100%;object-fit:cover"></div>
           <div style="background:var(--color-surface);aspect-ratio:3/4;overflow:hidden"><img src="assets/figure-3.png" alt="Charcoal figure drawing, seated male model on stool" style="width:100%;height:100%;object-fit:cover"></div>
@@ -341,7 +386,7 @@ body:not([data-page="home"]) .site-footer { display: block; }
 
         <h2 style="margin-top:var(--space-8);margin-bottom:var(--space-2)">Street sketches</h2>
         <p style="font-size:17px;max-width:60ch;opacity:0.85;margin-bottom:var(--space-6)">Buildings drawn on location - quick pen sketches and a colored-pencil study</p>
-        <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:var(--space-4)">
+        <div class="sketch-grid" style="display:grid;grid-template-columns:repeat(3,1fr);gap:var(--space-4)">
           <div style="background:var(--color-surface);aspect-ratio:3/4;overflow:hidden"><img src="assets/sketch-otepeshaz.png" alt="Pen sketch of a colonnaded building entrance, alternate angle" style="width:100%;height:100%;object-fit:cover"></div>
           <div style="background:var(--color-surface);aspect-ratio:3/4;overflow:hidden"><img src="assets/sketch-deli2.png" alt="Pen sketch of a building facade" style="width:100%;height:100%;object-fit:cover"></div>
           <div style="background:var(--color-surface);aspect-ratio:3/4;overflow:hidden"><img src="assets/sketch-lukacs.png" alt="Pen sketch of a colonnaded building entrance" style="width:100%;height:100%;object-fit:cover"></div>
@@ -352,7 +397,7 @@ body:not([data-page="home"]) .site-footer { display: block; }
 
         <h2 style="margin-top:var(--space-8);margin-bottom:var(--space-2)">Posters</h2>
         <p style="font-size:17px;max-width:60ch;opacity:0.85;margin-bottom:var(--space-6)">Event posters for talks, exhibitions and competitions.</p>
-        <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:var(--space-4)">
+        <div class="poster-grid" style="display:grid;grid-template-columns:repeat(4,1fr);gap:var(--space-4)">
           <div style="background:var(--color-surface);aspect-ratio:3/4;overflow:hidden"><img src="assets/poster-szendvics-week.png" alt="Poster for Szendvics week event, illustrated sandwich ingredients" style="width:100%;height:100%;object-fit:cover"></div>
           <div style="background:var(--color-surface);aspect-ratio:3/4;overflow:hidden"><img src="assets/poster-forest.png" alt="Poster illustration of a night forest with treehouses" style="width:100%;height:100%;object-fit:cover"></div>
           <div style="background:var(--color-surface);aspect-ratio:3/4;overflow:hidden"><img src="assets/poster-szendvics.png" alt="Poster titled Hol a hangunk, torn-paper and collage style" style="width:100%;height:100%;object-fit:cover"></div>
@@ -501,11 +546,11 @@ body:not([data-page="home"]) .site-footer { display: block; }
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#39351e" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
         </button>
 
-        <img src="assets/flower-yellow.png" alt="" style="position:absolute;width:110px;left:6%;top:38%;pointer-events:none;animation:drift1 8s ease-in-out infinite">
-        <img src="assets/flower-red.png" alt="" style="position:absolute;width:84px;left:24%;top:14%;pointer-events:none;animation:drift2 9.5s ease-in-out infinite">
+        <img class="deco-flower" src="assets/flower-yellow.png" alt="" style="position:absolute;width:110px;left:6%;top:38%;pointer-events:none;animation:drift1 8s ease-in-out infinite">
+        <img class="deco-flower" src="assets/flower-red.png" alt="" style="position:absolute;width:84px;left:24%;top:14%;pointer-events:none;animation:drift2 9.5s ease-in-out infinite">
         <img src="assets/barista-me-animated.png" alt="Bogi pouring coffee" style="position:absolute;top:8px;right:6%;width:min(521px,42vw);max-width:none;height:auto;display:block" />
 
-        <div style="position:relative;text-align:center;margin-top:200px">
+        <div class="about-title-block" style="position:relative;text-align:center;margin-top:200px">
           <h1 style="margin:0;color:#39351e">WHO AM I</h1>
           <p style="font-size:17px;line-height:1.5;margin:var(--space-3) auto 0;max-width:46ch;color:#39351e;opacity:0.85">Barista by day, designer always.</p>
         </div>
@@ -633,7 +678,7 @@ body:not([data-page="home"]) .site-footer { display: block; }
         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#39351e" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
       </button>
 
-      <img src="assets/flower-red.png" alt="" style="position:absolute;width:150px;right:6%;top:40px;pointer-events:none;animation:drift2 9s ease-in-out infinite">
+      <img class="deco-flower" src="assets/flower-red.png" alt="" style="position:absolute;width:150px;right:6%;top:40px;pointer-events:none;animation:drift2 9s ease-in-out infinite">
 
       <div style="max-width:1080px;margin:0 auto;padding:96px var(--space-8) var(--space-8);text-align:center;position:relative">
         <h6 style="color:#d6483e;margin:0 0 var(--space-3)">Copenhagen Fashion Week · Prototyping, Multimedia Design</h6>
@@ -641,7 +686,7 @@ body:not([data-page="home"]) .site-footer { display: block; }
       </div>
 
       <div style="max-width:1080px;margin:0 auto;padding:0 var(--space-8) var(--space-6)">
-        <div style="border-top:1px solid rgba(57,53,30,0.25);padding-top:var(--space-6);display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:var(--space-6);text-align:left">
+        <div class="cphfw-meta" style="border-top:1px solid rgba(57,53,30,0.25);padding-top:var(--space-6);display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:var(--space-6);text-align:left">
           <div><h6 style="color:#4b8f7d;margin:0 0 8px">Client</h6><p style="font-size:16px;line-height:1.45;margin:0;opacity:0.85">Copenhagen Fashion Week</p></div>
           <div><h6 style="color:#4b8f7d;margin:0 0 8px">Role</h6><p style="font-size:16px;line-height:1.45;margin:0;opacity:0.85">UX Research, UI/UX Design, Prototyping</p></div>
           <div><h6 style="color:#4b8f7d;margin:0 0 8px">Duration</h6><p style="font-size:16px;line-height:1.45;margin:0;opacity:0.85">8 weeks</p></div>
@@ -764,7 +809,7 @@ body:not([data-page="home"]) .site-footer { display: block; }
       <span style="flex:1;background:#eed25d"></span>
       <span style="flex:2;background:#d6483e"></span>
     </div>
-    <img src="assets/flower-yellow.png" alt="" style="position:absolute;width:180px;right:-40px;top:60px;opacity:0.18;pointer-events:none;animation:drift2 11s ease-in-out infinite">
+    <img class="deco-flower" src="assets/flower-yellow.png" alt="" style="position:absolute;width:180px;right:-40px;top:60px;opacity:0.18;pointer-events:none;animation:drift2 11s ease-in-out infinite">
 
     <div style="max-width:1080px;margin:0 auto;position:relative;display:grid;grid-template-columns:1.2fr 1fr 1fr;gap:var(--space-8);align-items:start" class="grid-2">
       <div>
@@ -786,7 +831,7 @@ body:not([data-page="home"]) .site-footer { display: block; }
         <a href="#" class="footer-toplink" data-go="arts" style="margin-top:6px">Arts</a>
         <a href="#" class="footer-toplink" data-go="about">Who am I</a>
         <a href="#" class="footer-toplink" data-go="contact">Get in touch →</a>
-        <img src="assets/flower-red.png" alt="" style="position:absolute;width:120px;opacity:0.16;pointer-events:none;animation:drift3 13s ease-in-out infinite;left:199px;top:85px">
+        <img class="deco-flower footer-nav-flower" src="assets/flower-red.png" alt="" style="position:absolute;width:120px;opacity:0.16;pointer-events:none;animation:drift3 13s ease-in-out infinite;left:199px;top:85px">
       </nav>
 
       <div style="display:flex;flex-direction:column;gap:10px">
