@@ -33,6 +33,17 @@ html, body { height: 100%; margin: 0; }
 .phase-flower img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain; pointer-events: none; }
 .phase-flower span { position: relative; font-size: 20px; line-height: 1; color: #39351e; letter-spacing: 0.04em; text-transform: uppercase; font-weight: 700; }
 
+/* rows of images that should share one height instead of one width —
+   each keeps its own aspect ratio (no cropping), so a row just packs
+   at its natural widths */
+.eqh-row { display: flex; flex-wrap: wrap; align-items: flex-start; }
+.eqh-row > figure { margin: 0; min-width: 0; }
+.eqh-row > figure figcaption { max-width: 30ch; }
+.eqh-img { height: var(--eqh, 280px); width: auto; max-width: 100%; display: block; }
+@media (max-width: 700px) {
+  .eqh-img { height: auto !important; width: 100% !important; }
+}
+
 /* pill "view the prototype" buttons */
 .pill-btn { display: inline-block; padding: 18px 56px; border-radius: 999px; font-size: 22px; line-height: 1; text-decoration: none; cursor: pointer; transition: background-color .25s ease, color .25s ease; }
 .pill-btn-blasol { background-color: #EED25D; color: #3A351E; }
@@ -224,9 +235,9 @@ body:not([data-page="home"]) .site-footer { display: block; }
             <h3 style="margin:0 0 var(--space-4)">Exhibition</h3>
             <p style="font-size:17px;line-height:1.55;opacity:0.85;margin:0">PIZITÍV took on urban sustainability and public wellbeing through Scandinavian best-practice examples, across five themes: the healthy city, the low-carbon city, the movement-based city, the resilient city. I helped turn those themes into a gamified, interactive installation that invited locals to map them onto real sites in Budaörs.</p>
           </div>
-          <div class="grid-2" style="display:grid;grid-template-columns:1fr 1fr;gap:var(--space-6);margin-top:var(--space-6);align-items:start">
-            <img src="assets/2040-stickersheet.jpeg" alt="Visitors walking through the PIZITÍV installation" style="width:100%;display:block;min-width:0" />
-            <img src="assets/2040-postcards.jpeg" alt="Illustrated postcards designed for the association's events" style="width:100%;display:block;min-width:0" />
+          <div class="eqh-row" style="gap:var(--space-6);margin-top:var(--space-6);justify-content:center;--eqh:320px">
+            <img class="eqh-img" src="assets/2040-stickersheet.jpeg" alt="Visitors walking through the PIZITÍV installation" />
+            <img class="eqh-img" src="assets/2040-postcards.jpeg" alt="Illustrated postcards designed for the association's events" />
           </div>
         </div>
       </div>
@@ -238,9 +249,9 @@ body:not([data-page="home"]) .site-footer { display: block; }
             <h3 style="margin:0 0 var(--space-4)">Designs and posters</h3>
             <p style="font-size:17px;line-height:1.55;opacity:0.85;margin:0">Alongside the workshops I designed posters and printed matter for a number of their events, doing the same job as the games: making architecture feel approachable.</p>
           </div>
-          <div class="grid-2" style="display:grid;grid-template-columns:1fr 1fr;gap:var(--space-6);margin-top:var(--space-6);align-items:start;max-width:760px">
-            <img src="assets/2040-poster-2050.jpg" alt="Poster for the 2050 model competition: hanging plants, dome-covered landscape and a QR code" style="width:100%;display:block;min-width:0" />
-            <img src="assets/2040-poster-lombhaz.png" alt="LOMB//HÁZ poster: an illustrated tree with an orange birdhouse on a yellow ground" style="width:100%;display:block;min-width:0" />
+          <div class="eqh-row" style="gap:var(--space-6);margin-top:var(--space-6);--eqh:400px">
+            <img class="eqh-img" src="assets/2040-poster-2050.jpg" alt="Poster for the 2050 model competition: hanging plants, dome-covered landscape and a QR code" />
+            <img class="eqh-img" src="assets/2040-poster-lombhaz.png" alt="LOMB//HÁZ poster: an illustrated tree with an orange birdhouse on a yellow ground" />
           </div>
         </div>
       </div>
@@ -302,10 +313,10 @@ body:not([data-page="home"]) .site-footer { display: block; }
           <h6 style="color:#3A351E;margin:0 0 var(--space-2)">Discover</h6>
           <h3 style="margin:0 0 var(--space-3)">Desk research, interviews, affinity diagram</h3>
           <p style="font-size:17px;line-height:1.5;opacity:0.85;margin:0 auto;max-width:70ch">We started with the discovering phase: desk research, 21 interviews with the target audience, plus conversations with people who have experience organising festivals. From the interview answers we built an affinity diagram to cluster what we heard.</p>
-          <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:var(--space-6);margin-top:var(--space-6);justify-items:center">
-            <figure style="margin:0"><img src="assets/blasol-deskresearch.png" alt="Desk research collage of festival ticketing and Gen Z audience sources" style="width:100%;max-width:221px;display:block;background:#fff"><figcaption style="font-size:15px;color:#39351e;margin:var(--space-2) 0 0">Desk research</figcaption></figure>
-            <figure style="margin:0"><img src="assets/blasol-interviews.png" alt="Wall of colour-coded interview notes from 21 participants" style="width:100%;max-width:221px;display:block;background:#fff"><figcaption style="font-size:15px;color:#39351e;margin:var(--space-2) 0 0">21 interviews</figcaption></figure>
-            <figure style="margin:0"><img src="assets/blasol-affinity.png" alt="Affinity diagram clustering interview insights into seven themes" style="width:100%;max-width:221px;display:block;background:#fff"><figcaption style="font-size:15px;color:#39351e;margin:var(--space-2) 0 0">Affinity diagram</figcaption></figure>
+          <div class="eqh-row" style="gap:var(--space-6);margin-top:var(--space-6);justify-content:center;--eqh:300px">
+            <figure><img class="eqh-img" src="assets/blasol-deskresearch.png" alt="Desk research collage of festival ticketing and Gen Z audience sources" style="background:#fff"><figcaption style="font-size:15px;color:#39351e;margin:var(--space-2) 0 0">Desk research</figcaption></figure>
+            <figure><img class="eqh-img" src="assets/blasol-interviews.png" alt="Wall of colour-coded interview notes from 21 participants" style="background:#fff"><figcaption style="font-size:15px;color:#39351e;margin:var(--space-2) 0 0">21 interviews</figcaption></figure>
+            <figure><img class="eqh-img" src="assets/blasol-affinity.png" alt="Affinity diagram clustering interview insights into seven themes" style="background:#fff"><figcaption style="font-size:15px;color:#39351e;margin:var(--space-2) 0 0">Affinity diagram</figcaption></figure>
           </div>
         </div>
 
@@ -320,11 +331,11 @@ body:not([data-page="home"]) .site-footer { display: block; }
           <h6 style="color:#E6E5E1;margin:0 0 var(--space-2)">Develop</h6>
           <h3 style="margin:0 0 var(--space-3);color:#E6E5E1">Wireframing and prototyping</h3>
           <p style="font-size:17px;line-height:1.5;margin:0 auto;max-width:70ch;color:#E6E5E1">After defining our target user, we developed and iterated on concepts through wireframing and prototyping — translating user needs into a functional and engaging solution. Early sketches and low-fidelity wireframes helped explore ideas quickly and shape the core user flow.</p>
-          <div style="display:flex;flex-wrap:wrap;justify-content:center;align-items:flex-end;gap:20px;margin-top:var(--space-6)">
-            <figure style="margin:0"><img src="assets/blasol-sketch-1.png" alt="Pencil sketch of the home screen with points and leaderboard" style="height:225px;width:auto;display:block"><figcaption style="font-size:15px;color:#E6E5E1;margin:var(--space-2) 0 0;opacity:0.7">Home sketch</figcaption></figure>
-            <figure style="margin:0"><img src="assets/blasol-sketch-2.png" alt="Pen sketch of the scan-the-bin screen" style="height:225px;width:auto;display:block"><figcaption style="font-size:15px;color:#E6E5E1;margin:var(--space-2) 0 0;opacity:0.7">Scan the bin</figcaption></figure>
-            <figure style="margin:0"><img src="assets/blasol-sketch-3.png" alt="Pencil sketch of the profile screen and points maths" style="height:225px;width:auto;display:block"><figcaption style="font-size:15px;color:#E6E5E1;margin:var(--space-2) 0 0;opacity:0.7">Profile &amp; points</figcaption></figure>
-            <figure style="margin:0"><img src="assets/blasol-wireframes.png" alt="Greyscale wireframes of ten app screens" style="height:225px;width:auto;display:block;object-fit:contain"><figcaption style="font-size:15px;color:#E6E5E1;margin:var(--space-2) 0 0;opacity:0.7">Low-fidelity wireframes</figcaption></figure>
+          <div class="eqh-row" style="justify-content:center;align-items:flex-end;gap:20px;margin-top:var(--space-6);--eqh:225px">
+            <figure><img class="eqh-img" src="assets/blasol-sketch-1.png" alt="Pencil sketch of the home screen with points and leaderboard"><figcaption style="font-size:15px;color:#E6E5E1;margin:var(--space-2) 0 0;opacity:0.7">Home sketch</figcaption></figure>
+            <figure><img class="eqh-img" src="assets/blasol-sketch-2.png" alt="Pen sketch of the scan-the-bin screen"><figcaption style="font-size:15px;color:#E6E5E1;margin:var(--space-2) 0 0;opacity:0.7">Scan the bin</figcaption></figure>
+            <figure><img class="eqh-img" src="assets/blasol-sketch-3.png" alt="Pencil sketch of the profile screen and points maths"><figcaption style="font-size:15px;color:#E6E5E1;margin:var(--space-2) 0 0;opacity:0.7">Profile &amp; points</figcaption></figure>
+            <figure><img class="eqh-img" src="assets/blasol-wireframes.png" alt="Greyscale wireframes of ten app screens" style="object-fit:contain"><figcaption style="font-size:15px;color:#E6E5E1;margin:var(--space-2) 0 0;opacity:0.7">Low-fidelity wireframes</figcaption></figure>
           </div>
           <figure style="margin:var(--space-6) auto 0;max-width:520px;background:#e6e5e1;padding:var(--space-4)">
             <img src="assets/blasol-styletile-full.png" alt="Blå Sol style tile: fonts, buttons, icons, colour palette" style="width:100%;display:block">
@@ -458,9 +469,9 @@ body:not([data-page="home"]) .site-footer { display: block; }
           <h6 style="color:#39351e;margin:0 0 var(--space-2)">Discover</h6>
           <h3 style="margin:0 0 var(--space-3)">Mapping the Aarhus coffee scene</h3>
           <p style="font-size:17px;line-height:1.5;opacity:0.85;margin:0 auto;max-width:70ch">Desk research into local cafés, mapped by atmosphere, price, quality and accessibility — the four things people actually weigh when choosing where to go.</p>
-          <div style="display:grid;grid-template-columns:1fr 1fr;gap:var(--space-6);margin-top:var(--space-6);align-items:start;justify-items:center;max-width:900px;margin-left:auto;margin-right:auto">
-            <figure style="margin:0"><img src="assets/coffee-interviews.png" alt="Colour-coded interview notes from twelve coffee drinkers and baristas" style="width:100%;display:block"><figcaption style="font-size:15px;color:#39351e;margin:var(--space-2) 0 0">Interviews with baristas, students and café staff in Aarhus</figcaption></figure>
-            <figure style="margin:0"><img src="assets/coffee-cafes.png" alt="Desk research boards on La Cabra, Aoife, Europa Kaffe og Te and Stiller's" style="width:100%;display:block"><figcaption style="font-size:15px;color:#39351e;margin:var(--space-2) 0 0">Desk research on the four cafés — La Cabra, Aoife, Europa and Stiller's</figcaption></figure>
+          <div class="eqh-row" style="gap:var(--space-6);margin-top:var(--space-6);justify-content:center;max-width:900px;margin-left:auto;margin-right:auto;--eqh:380px">
+            <figure><img class="eqh-img" src="assets/coffee-interviews.png" alt="Colour-coded interview notes from twelve coffee drinkers and baristas"><figcaption style="font-size:15px;color:#39351e;margin:var(--space-2) 0 0">Interviews with baristas, students and café staff in Aarhus</figcaption></figure>
+            <figure><img class="eqh-img" src="assets/coffee-cafes.png" alt="Desk research boards on La Cabra, Aoife, Europa Kaffe og Te and Stiller's"><figcaption style="font-size:15px;color:#39351e;margin:var(--space-2) 0 0">Desk research on the four cafés — La Cabra, Aoife, Europa and Stiller's</figcaption></figure>
           </div>
         </div>
 
@@ -468,9 +479,9 @@ body:not([data-page="home"]) .site-footer { display: block; }
           <h6 style="color:#f4e3d3;margin:0 0 var(--space-2)">Define</h6>
           <h3 style="margin:0 0 var(--space-3);color:#f4e3d3">Who it is for</h3>
           <p style="font-size:17px;line-height:1.5;margin:0 auto;max-width:70ch;color:#f4e3d3">Young coffee enthusiasts new to the city: curious, quality-driven, and looking for company as much as for a good cup.</p>
-          <div style="display:grid;grid-template-columns:1.4fr 1fr;gap:var(--space-6);margin-top:var(--space-6);align-items:start;justify-items:center;max-width:900px;margin-left:auto;margin-right:auto">
-            <figure style="margin:0"><img src="assets/coffee-valueprop.png" alt="Value Proposition Canvas with gains, pains, products and customer jobs" style="width:100%;display:block"><figcaption style="font-size:15px;color:#f4e3d3;margin:var(--space-2) 0 0">Value Proposition Canvas — what the site offers against what users need</figcaption></figure>
-            <figure style="margin:0"><img src="assets/coffee-persona.png" alt="Persona board for Mikkel Sørensen with goals, frustrations, quotes and values" style="width:100%;display:block"><figcaption style="font-size:15px;color:#f4e3d3;margin:var(--space-2) 0 0">Persona — Mikkel Sørensen, 25, architecture student and part-time barista</figcaption></figure>
+          <div class="eqh-row" style="gap:var(--space-6);margin-top:var(--space-6);justify-content:center;max-width:900px;margin-left:auto;margin-right:auto;--eqh:360px">
+            <figure><img class="eqh-img" src="assets/coffee-valueprop.png" alt="Value Proposition Canvas with gains, pains, products and customer jobs"><figcaption style="font-size:15px;color:#f4e3d3;margin:var(--space-2) 0 0">Value Proposition Canvas — what the site offers against what users need</figcaption></figure>
+            <figure><img class="eqh-img" src="assets/coffee-persona.png" alt="Persona board for Mikkel Sørensen with goals, frustrations, quotes and values"><figcaption style="font-size:15px;color:#f4e3d3;margin:var(--space-2) 0 0">Persona — Mikkel Sørensen, 25, architecture student and part-time barista</figcaption></figure>
           </div>
         </div>
 
@@ -478,13 +489,13 @@ body:not([data-page="home"]) .site-footer { display: block; }
           <h6 style="color:#e6e5e1;margin:0 0 var(--space-2)">Develop</h6>
           <h3 style="margin:0 0 var(--space-3);color:#e6e5e1">Four things the site had to do</h3>
           <p style="font-size:17px;line-height:1.5;margin:0 auto;max-width:70ch;color:#e6e5e1">Explore cafés with confidence, arrange coffee meet-ups, join café-organised events, and share your own experiences and photos in a profile.</p>
-          <div style="display:flex;flex-wrap:wrap;justify-content:center;align-items:flex-end;gap:28px;margin-top:var(--space-6)">
-            <figure style="margin:0"><img src="assets/coffee-sketch.png" alt="Pen sketch of the landing page, café grid and list layouts" style="height:280px;width:auto;display:block"><figcaption style="font-size:15px;color:#f4e3d3;margin:var(--space-2) 0 0">Layout sketches</figcaption></figure>
-            <figure style="margin:0"><img src="assets/coffee-logosketch.png" alt="Pencil sketches exploring the coffee-cup logo and CO&amp;CO mark" style="height:280px;width:auto;display:block"><figcaption style="font-size:15px;color:#f4e3d3;margin:var(--space-2) 0 0">Logo exploration</figcaption></figure>
+          <div class="eqh-row" style="justify-content:center;align-items:flex-end;gap:28px;margin-top:var(--space-6);--eqh:280px">
+            <figure><img class="eqh-img" src="assets/coffee-sketch.png" alt="Pen sketch of the landing page, café grid and list layouts"><figcaption style="font-size:15px;color:#f4e3d3;margin:var(--space-2) 0 0">Layout sketches</figcaption></figure>
+            <figure><img class="eqh-img" src="assets/coffee-logosketch.png" alt="Pencil sketches exploring the coffee-cup logo and CO&amp;CO mark"><figcaption style="font-size:15px;color:#f4e3d3;margin:var(--space-2) 0 0">Logo exploration</figcaption></figure>
           </div>
-          <div style="display:grid;grid-template-columns:1fr 1fr;gap:var(--space-6);margin:var(--space-6) auto 0;max-width:900px;align-items:start;justify-items:center">
-            <figure style="margin:0"><img src="assets/coffee-wireframes.png" alt="Site map from the index page through visit, cafés, info, events and profile" style="width:100%;display:block"><figcaption style="font-size:15px;color:#f4e3d3;margin:var(--space-2) 0 0">Site map</figcaption></figure>
-            <figure style="margin:0"><img src="assets/coffee-sitemap.png" alt="Greyscale wireframes of the first page, cafés, café page, profile, signup, log in and event page" style="width:100%;display:block"><figcaption style="font-size:15px;color:#f4e3d3;margin:var(--space-2) 0 0">Low-fidelity wireframes</figcaption></figure>
+          <div class="eqh-row" style="gap:var(--space-6);margin:var(--space-6) auto 0;max-width:900px;justify-content:center;--eqh:280px">
+            <figure><img class="eqh-img" src="assets/coffee-wireframes.png" alt="Site map from the index page through visit, cafés, info, events and profile"><figcaption style="font-size:15px;color:#f4e3d3;margin:var(--space-2) 0 0">Site map</figcaption></figure>
+            <figure><img class="eqh-img" src="assets/coffee-sitemap.png" alt="Greyscale wireframes of the first page, cafés, café page, profile, signup, log in and event page"><figcaption style="font-size:15px;color:#f4e3d3;margin:var(--space-2) 0 0">Low-fidelity wireframes</figcaption></figure>
           </div>
         </div>
       </div>
@@ -722,9 +733,9 @@ body:not([data-page="home"]) .site-footer { display: block; }
           <h6 style="color:#39351e;margin:0 0 var(--space-2)">Discover</h6>
           <h3 style="margin:0 0 var(--space-3)">Field research and five interviews</h3>
           <p style="font-size:17px;line-height:1.5;opacity:0.85;margin:0 auto;max-width:70ch">We observed Fashion Week attendees on three premises - interest and inspiration, values around sustainability, and web behaviour - then ran five interviews to back our assumptions. Sustainability in fashion mattered to everyone we spoke to, and social media is where they look first. From that we built a persona: someone with a passion for fashion who shows their personality through their wardrobe, and who wants both information and company.</p>
-          <div style="display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:var(--space-6);margin:var(--space-6) auto 0;max-width:900px">
-            <figure style="margin:0"><img src="assets/cphfw-fieldresearch.png" alt="Field research board with observation lists, desk research notes and interview transcripts" style="width:100%;display:block;background:#fff"><figcaption style="font-size:13px;letter-spacing:0.02em;margin-top:8px;color:#39351e;opacity:0.8">Field research and interviews (fig. 1)</figcaption></figure>
-            <figure style="margin:0"><img src="assets/cphfw-brands.png" alt="Table of Copenhagen brands with attributes and their connection to sustainability" style="width:100%;display:block;background:#fff"><figcaption style="font-size:13px;letter-spacing:0.02em;margin-top:8px;color:#39351e;opacity:0.8">Brand mapping: attributes and sustainability</figcaption></figure>
+          <div class="eqh-row" style="gap:var(--space-6);margin:var(--space-6) auto 0;max-width:900px;justify-content:center;--eqh:340px">
+            <figure><img class="eqh-img" src="assets/cphfw-fieldresearch.png" alt="Field research board with observation lists, desk research notes and interview transcripts" style="background:#fff"><figcaption style="font-size:13px;letter-spacing:0.02em;margin-top:8px;color:#39351e;opacity:0.8">Field research and interviews (fig. 1)</figcaption></figure>
+            <figure><img class="eqh-img" src="assets/cphfw-brands.png" alt="Table of Copenhagen brands with attributes and their connection to sustainability" style="background:#fff"><figcaption style="font-size:13px;letter-spacing:0.02em;margin-top:8px;color:#39351e;opacity:0.8">Brand mapping: attributes and sustainability</figcaption></figure>
           </div>
           <div style="margin:var(--space-6) auto 0;max-width:900px">
             <figure style="margin:0"><img src="assets/cphfw-persona.png" alt="Persona board for Pierre, 46, founder of Mode Fantaisie, with values, business objectives and user goals" style="width:100%;display:block;background:#fff"><figcaption style="font-size:13px;letter-spacing:0.02em;margin-top:8px;color:#39351e;opacity:0.8">Persona — Pierre, founder of Mode Fantaisie</figcaption></figure>
@@ -738,9 +749,9 @@ body:not([data-page="home"]) .site-footer { display: block; }
           <h6 style="color:#f4e3d3;margin:0 0 var(--space-2)">Define</h6>
           <h3 style="margin:0 0 var(--space-3);color:#f4e3d3">From canvas to requirements</h3>
           <p style="font-size:17px;line-height:1.5;margin:0 auto;max-width:70ch;color:#f4e3d3">A Value Proposition Canvas showed how much information the solution had to carry — schedules, sustainable clothing, new brands. We ideated with the How Might We method, grouped the results into an affinity diagram, and turned them into a list of requirements that doubled as our task flow. Twelve candidate values went up on the wall; five got the most sticker votes and stayed.</p>
-          <div style="display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:var(--space-6);margin:var(--space-6) auto 0;max-width:900px">
-            <figure style="margin:0"><img src="assets/cphfw-vpc.png" alt="Hand-filled Value Proposition Canvas for CPHFW and the persona Pierre" style="width:100%;display:block;background:#fff"><figcaption style="font-size:13px;letter-spacing:0.02em;margin-top:8px;color:#f4e3d3">Value Proposition Canvas</figcaption></figure>
-            <figure style="margin:0"><img src="assets/cphfw-hmw.png" alt="How Might We affinity diagram grouped into socials, brands, events and city" style="width:100%;display:block;background:#fff"><figcaption style="font-size:13px;letter-spacing:0.02em;margin-top:8px;color:#f4e3d3">HMW method, grouped into an affinity diagram</figcaption></figure>
+          <div class="eqh-row" style="gap:var(--space-6);margin:var(--space-6) auto 0;max-width:900px;justify-content:center;--eqh:340px">
+            <figure><img class="eqh-img" src="assets/cphfw-vpc.png" alt="Hand-filled Value Proposition Canvas for CPHFW and the persona Pierre" style="background:#fff"><figcaption style="font-size:13px;letter-spacing:0.02em;margin-top:8px;color:#f4e3d3">Value Proposition Canvas</figcaption></figure>
+            <figure><img class="eqh-img" src="assets/cphfw-hmw.png" alt="How Might We affinity diagram grouped into socials, brands, events and city" style="background:#fff"><figcaption style="font-size:13px;letter-spacing:0.02em;margin-top:8px;color:#f4e3d3">HMW method, grouped into an affinity diagram</figcaption></figure>
           </div>
           <div style="margin:var(--space-6) auto 0;max-width:900px">
             <figure style="margin:0"><img src="assets/cphfw-requirements.png" alt="Requirements flow from the screen saver through menu, events, gallery, brands and CPH city" style="width:100%;display:block;background:#fff"><figcaption style="font-size:13px;letter-spacing:0.02em;margin-top:8px;color:#f4e3d3">List of requirements, doubling as our task flow</figcaption></figure>
@@ -758,9 +769,9 @@ body:not([data-page="home"]) .site-footer { display: block; }
           <h6 style="color:#e6e5e1;margin:0 0 var(--space-2)">Develop</h6>
           <h3 style="margin:0 0 var(--space-3);color:#e6e5e1">Low fidelity, on paper first</h3>
           <p style="font-size:17px;line-height:1.5;margin:0 auto;max-width:70ch;color:#e6e5e1">We split the work between info screen and companion app and mapped both out on paper in a brainstorm session. The info screen was meant to read like a fashion poster — a gallery first, lots of air between elements, bold typography. Testing the LOFI gave us confidence in the flow: the changes were small ones. More time on the QR code, a clearer signal that the screen is interactive, a scroll bar in the menu, and a proper back button.</p>
-          <div style="display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:var(--space-6);margin:var(--space-6) auto 0;max-width:900px">
-            <figure style="margin:0"><img src="assets/cphfw-lofi-info.png" alt="Low fidelity info screen wireframes: gallery strip, event lists, menu and selfie flow" style="width:100%;display:block;background:#fff"><figcaption style="font-size:13px;letter-spacing:0.02em;margin-top:8px;color:#e6e5e1">LOFI info screen</figcaption></figure>
-            <figure style="margin:0"><img src="assets/cphfw-lofi-app.png" alt="Low fidelity companion app wireframes with expandable day-by-day event programme" style="width:100%;display:block;background:#fff"><figcaption style="font-size:13px;letter-spacing:0.02em;margin-top:8px;color:#e6e5e1">LOFI companion app</figcaption></figure>
+          <div class="eqh-row" style="gap:var(--space-6);margin:var(--space-6) auto 0;max-width:900px;justify-content:center;--eqh:340px">
+            <figure><img class="eqh-img" src="assets/cphfw-lofi-info.png" alt="Low fidelity info screen wireframes: gallery strip, event lists, menu and selfie flow" style="background:#fff"><figcaption style="font-size:13px;letter-spacing:0.02em;margin-top:8px;color:#e6e5e1">LOFI info screen</figcaption></figure>
+            <figure><img class="eqh-img" src="assets/cphfw-lofi-app.png" alt="Low fidelity companion app wireframes with expandable day-by-day event programme" style="background:#fff"><figcaption style="font-size:13px;letter-spacing:0.02em;margin-top:8px;color:#e6e5e1">LOFI companion app</figcaption></figure>
           </div>
         </div>
       </div>
@@ -772,9 +783,9 @@ body:not([data-page="home"]) .site-footer { display: block; }
         <div style="max-width:1000px;margin:0 auto">
           <figure style="margin:0"><img src="assets/cphfw-mockup.png" alt="The CPHFW info screen mocked up on a digital display in the street" style="width:100%;display:block;background:#fff"><figcaption style="font-size:13px;letter-spacing:0.02em;margin-top:8px;color:#39351e;opacity:0.8">The info screen in place</figcaption></figure>
         </div>
-        <div style="display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:var(--space-6);max-width:1000px;margin:var(--space-6) auto 0">
-          <figure style="margin:0"><img src="assets/cphfw-hifi-info.png" alt="High fidelity info screen: CPHFW cover, Instagram gallery with QR code, brands list" style="width:100%;display:block;background:#fff"><figcaption style="font-size:13px;letter-spacing:0.02em;margin-top:8px;color:#39351e;opacity:0.8">HIFI info screen</figcaption></figure>
-          <figure style="margin:0"><img src="assets/cphfw-hifi-app.png" alt="High fidelity companion app: discover the city, gallery and fashion shows today" style="width:100%;display:block;background:#fff"><figcaption style="font-size:13px;letter-spacing:0.02em;margin-top:8px;color:#39351e;opacity:0.8">HIFI companion app</figcaption></figure>
+        <div class="eqh-row" style="gap:var(--space-6);max-width:1000px;margin:var(--space-6) auto 0;justify-content:center;--eqh:360px">
+          <figure><img class="eqh-img" src="assets/cphfw-hifi-info.png" alt="High fidelity info screen: CPHFW cover, Instagram gallery with QR code, brands list" style="background:#fff"><figcaption style="font-size:13px;letter-spacing:0.02em;margin-top:8px;color:#39351e;opacity:0.8">HIFI info screen</figcaption></figure>
+          <figure><img class="eqh-img" src="assets/cphfw-hifi-app.png" alt="High fidelity companion app: discover the city, gallery and fashion shows today" style="background:#fff"><figcaption style="font-size:13px;letter-spacing:0.02em;margin-top:8px;color:#39351e;opacity:0.8">HIFI companion app</figcaption></figure>
         </div>
 
         <div style="display:flex;flex-wrap:wrap;gap:var(--space-4);justify-content:center;margin-top:var(--space-8)">
