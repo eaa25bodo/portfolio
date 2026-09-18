@@ -87,6 +87,10 @@ body:not([data-page="home"]) .site-footer { display: block; }
 .footer-bottom-link { color: #e6e5e1; text-decoration: none; }
 .footer-bottom-link:hover { color: #eed25d; }
 
+/* Festival App (Blå Sol) — square corners, no rounding */
+section[data-page="festival"] .back-btn,
+section[data-page="festival"] .pill-btn { border-radius: 0; }
+
 /* ── Responsive ──────────────────────────────────────────────── */
 @media (max-width: 900px) {
   :root { --space-8: 22px; --space-6: 18px; }
