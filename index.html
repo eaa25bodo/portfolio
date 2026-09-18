@@ -91,6 +91,9 @@ body:not([data-page="home"]) .site-footer { display: block; }
 section[data-page="festival"] .back-btn,
 section[data-page="festival"] .pill-btn { border-radius: 0; }
 
+/* Who Am I — a little more breathing room than the site default */
+section[data-page="about"] { --space-8: 44px; --space-6: 32px; }
+
 /* ── Responsive ──────────────────────────────────────────────── */
 @media (max-width: 900px) {
   :root { --space-8: 22px; --space-6: 18px; }
@@ -561,7 +564,7 @@ section[data-page="festival"] .pill-btn { border-radius: 0; }
 
         <img class="deco-flower" src="assets/flower-yellow.png" alt="" style="position:absolute;width:110px;left:6%;top:38%;pointer-events:none;animation:drift1 8s ease-in-out infinite">
         <img class="deco-flower" src="assets/flower-red.png" alt="" style="position:absolute;width:84px;left:24%;top:14%;pointer-events:none;animation:drift2 9.5s ease-in-out infinite">
-        <img src="assets/barista-me-animated.png" alt="Bogi pouring coffee" style="position:absolute;top:8px;right:6%;width:min(521px,42vw);max-width:none;height:auto;display:block" />
+        <img src="assets/barista-me-animated.png" alt="Bogi pouring coffee" style="position:absolute;top:0;right:0;width:min(521px,42vw);max-width:none;height:auto;display:block" />
 
         <div class="about-title-block" style="position:relative;text-align:center;margin-top:200px">
           <h1 style="margin:0;color:#39351e">WHO AM I</h1>
